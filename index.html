@@ -144,7 +144,6 @@ a.btn{text-decoration:none}
   .alert-banner .help a,.help a{display:inline-block;padding:5px 2px}
 }
 
-
 /* ===== Capa visual Landing Premium integrada (sin alterar la lógica del panel) ===== */
 :root{
   --bg:#f3f6fb;--surface:#ffffff;--surface-2:#f7f9fd;--text:#172238;--text-dim:#65728a;
@@ -216,7 +215,6 @@ th,td{padding:11px 12px}
 @media(max-width:900px){.landing-inner{grid-template-columns:1fr;gap:28px}.landing-copy{max-width:760px}.landing-visual{max-width:620px;width:100%;margin:0 auto}.landing-window{transform:none}.landing-features{padding-top:14px;padding-bottom:14px}}
 @media(max-width:600px){#landingHero{padding:31px 17px 28px}.landing-copy h2{font-size:39px;margin-top:17px}.landing-copy p{font-size:14px}.landing-actions{margin-top:22px;display:grid;grid-template-columns:1fr}.landing-btn{width:100%;min-height:47px}.landing-trust{gap:10px 15px;margin-top:20px;font-size:10.5px}.landing-visual{padding:0}.landing-window{padding:12px;border-radius:15px}.mock-kpis{gap:6px}.mock-kpi{padding:10px 7px}.mock-kpi span{font-size:8px}.mock-kpi strong{font-size:17px}.mock-bars{height:78px}.landing-features{grid-template-columns:1fr;gap:2px;padding:13px 12px}.landing-feature{padding:9px}.wrap{padding-top:14px}.brand h1{font-size:16px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;scroll-behavior:auto!important}}
-
 </style>
 
 <style id="nexusSidebarStyles">
@@ -224,7 +222,6 @@ th,td{padding:11px 12px}
 #nxSidebar{position:fixed;z-index:9000;left:0;top:0;bottom:0;width:258px;padding:20px 14px 16px;background:linear-gradient(180deg,#08172b 0%,#0b2038 55%,#091629 100%);border-right:1px solid var(--nx-side-line);color:#eaf4ff;display:none;flex-direction:column;gap:14px;box-shadow:12px 0 34px rgba(3,12,27,.13);overflow-y:auto}
 body.nx-sidebar-on #nxSidebar{display:flex}body.nx-sidebar-on #dashboardTop,body.nx-sidebar-on .wrap,body.nx-sidebar-on #nexusDiag{margin-left:258px;width:calc(100% - 258px);box-sizing:border-box}body.nx-sidebar-on #dashboardTop{padding-left:18px}body.nx-sidebar-on .wrap{padding-left:18px;padding-right:18px}body.nx-sidebar-on #nexusDiag{margin-left:276px;width:calc(100% - 294px)}
 .nxs-brand{display:flex;align-items:center;gap:11px;padding:4px 7px 16px;border-bottom:1px solid var(--nx-side-line)}.nxs-logo{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;background:linear-gradient(140deg,#153f66,#0d263f);border:1px solid rgba(57,214,232,.48);color:var(--nx-side-cyan);font-size:19px;font-weight:900;box-shadow:0 0 24px rgba(57,214,232,.12)}.nxs-brand strong{display:block;font-size:15px;letter-spacing:1.5px}.nxs-brand small{display:block;color:var(--nx-side-muted);font-size:9px;letter-spacing:1.1px;margin-top:4px}.nxs-caption{font-size:9px;letter-spacing:1.7px;color:#6f89a8;font-weight:800;padding:4px 10px 0}.nxs-nav{display:grid;gap:7px}
-/* Botones de navegación con volumen 3D y estado activo claramente iluminado */
 .nxs-link{position:relative;isolation:isolate;overflow:hidden;width:100%;min-height:41px;border:1px solid rgba(112,158,204,.2);border-bottom-color:rgba(0,0,0,.52);background:linear-gradient(180deg,rgba(29,57,86,.94) 0%,rgba(14,36,60,.98) 100%);color:var(--nx-side-text);padding:10px 11px;border-radius:11px;display:flex;align-items:center;gap:11px;text-align:left;font:600 12px/1.25 inherit;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.09),0 3px 0 rgba(2,9,20,.72),0 5px 10px rgba(0,0,0,.16);transform:translateY(0);transition:background .2s,border-color .2s,box-shadow .2s,transform .16s,color .2s}
 .nxs-link:before{content:"";position:absolute;inset:0;z-index:-1;opacity:0;background:linear-gradient(105deg,rgba(57,214,232,.2),transparent 58%,rgba(83,142,255,.13));transition:opacity .22s}
 .nxs-link:after{content:"";position:absolute;left:0;top:20%;bottom:20%;width:3px;border-radius:0 4px 4px 0;background:#55efff;box-shadow:0 0 12px #39d6e8;opacity:0;transform:scaleY(.45);transition:opacity .2s,transform .2s}
@@ -287,7 +284,6 @@ body.nx-sidebar-on #nxSidebar{display:flex}body.nx-sidebar-on #dashboardTop,body
 @media(prefers-reduced-motion:reduce){#nexusIntro *,#nexusIntro:before{animation:none!important;transition:none!important}}
 </style>
 <style id="nx-skin">
-/* ===== NEXUS · piel visual del dashboard (solo estilos; la lógica no se toca) ===== */
 :root,:root[data-theme="light"]{--bg:#eaf1f8;--surface:#ffffff;--surface-2:#f2f7fc;--text:#0b1a2e;--text-dim:#53698a;--border:#d3deec;--accent:#0a7fa6;--accent-dim:#ddf1f8;--green:#0f8a63;--green-bg:#dcf5ec;--yellow:#a16207;--yellow-bg:#fdf0cf;--red:#c8324a;--red-bg:#fde6ea;--excellent:#1565c0;--excellent-bg:#e1edfb;--radius:16px;--shadow:0 10px 30px rgba(8,30,60,.07);--nx-glow:#12baf3}
 :root[data-theme="dark"]{--bg:#050b18;--surface:#0c1a2e;--surface-2:#112440;--text:#edf7ff;--text-dim:#8caac7;--border:#1f3752;--accent:#55e5ff;--accent-dim:#0f3347;--green:#36e2ac;--green-bg:#0c3a33;--yellow:#f3cb62;--yellow-bg:#3a3018;--red:#ff7a8a;--red-bg:#3d1d2a;--excellent:#4cc3ff;--excellent-bg:#0c3350;--shadow:0 12px 34px rgba(0,0,0,.35)}
 html:root[data-theme="dark"] body{background:radial-gradient(ellipse at 80% -8%,#123e68 0,transparent 42%),radial-gradient(ellipse at 0% 100%,#102d52 0,transparent 45%),linear-gradient(160deg,#050b18,#08172b 60%,#061020) fixed}
@@ -374,7 +370,7 @@ html #btnMore{display:none;font-size:20px;line-height:1}
 <script id="nx-cinema-js">
 (()=>{const c=document.getElementById('nxCinema');if(!c)return;
 document.body.classList.add('nx-lock');
-const AUTO_ENTER=false; /* true = al terminar pasa directo al dashboard, sin mostrar la bienvenida */
+const AUTO_ENTER=false;
 if(matchMedia('(prefers-reduced-motion: reduce)').matches){c.remove();return}
 let done=false;
 function end(){if(done)return;done=true;document.body.classList.remove('nx-lock');c.classList.add('out');setTimeout(()=>{c.remove();if(AUTO_ENTER){const b=document.getElementById('nxEnter');if(b)b.click()}},700)}
@@ -735,7 +731,6 @@ let vendors = load(LS.v, [
   {id:'v2', name:'José Manuel Pérez', zone:'Sendero San Bernardo'},
   {id:'v3', name:'Krishna Olivares Hinojosa', zone:'Sendero San Bernardo'}
 ]);
-// Exponer la lista real para componentes externos; la variable principal es `let vendors` y no vive automáticamente en window.
 window.vendors = vendors;
 
 let dailyRecords = load(LS.r, [
@@ -748,8 +743,6 @@ let metas = load(LS.m, [
   {id:'m2', vendorId:'v2', period:'2026-09', metaVenta:8000000, diasTotales:20, diasTranscurridos:9, manual:false},
   {id:'m3', vendorId:'v3', period:'2026-09', metaVenta:12000000, diasTotales:20, diasTranscurridos:9, manual:false}
 ]);
-// Limpieza segura de las filas de demostración originales: solo elimina registros
-// que conservan exactamente sus IDs y valores de muestra; no toca datos editados.
 const DEMO_RECORDS = [
   {id:'d1',vendorId:'v1',date:'2026-09-05',clientesVisitados:8,ventaTotalSinIva:1200000,clientesNuevos:0,clientesConCompra:6,facturadoSinIva:1150000,devoluciones:20000,observaciones:''},
   {id:'d2',vendorId:'v1',date:'2026-09-12',clientesVisitados:9,ventaTotalSinIva:1500000,clientesNuevos:1,clientesConCompra:7,facturadoSinIva:1480000,devoluciones:0,observaciones:''},
@@ -781,7 +774,6 @@ function autoElapsedDays(period){ if(!period) return 0; const {start,end}=period
   if(today<start) return 0; const cap = today<end? today: end; return businessDaysInRange(start,cap); }
 
 function statusOf(cumplReal, nuevos, avanceEsperado=100){
-  // Un período futuro (p. ej., noviembre antes del 1/11) todavía no puede evaluarse.
   if (avanceEsperado <= 0) return {level:'upcoming', label:'Por iniciar', desc:'El período aún no comienza; el estado crítico se evaluará desde el primer día hábil del mes.', icon:'⚪'};
   const ritmo = (cumplReal/avanceEsperado*100);
   const ventaOk = ritmo >= settings.ventaThreshold;
@@ -796,8 +788,10 @@ function normalize(s){ return (s||'').toString().toLowerCase().normalize('NFD').
 function findVendor(name){ return vendors.find(x=>normalize(x.name)===normalize(name)); }
 function vendorSlugId(name){ return 'v_'+normalize(name); }
 function upsertVendorByName(name, zone){
-  let v = findVendor(name);
-  if(!v){ v={id:vendorSlugId(name), name:(name||'').trim(), zone:zone||''}; vendors.push(v); }
+  const cleanName = (name||'').trim();
+  if(!cleanName) return null;
+  let v = findVendor(cleanName);
+  if(!v){ v={id:vendorSlugId(cleanName), name:cleanName, zone:zone||''}; vendors.push(v); }
   else if(zone) v.zone = zone;
   return v;
 }
@@ -819,10 +813,14 @@ async function syncFromSheet(showToast){
     if(!res.ok) throw new Error('HTTP '+res.status);
     const data = await res.json();
     if(!data || data.ok!==true || !Array.isArray(data.records)) throw new Error(data.error||'Respuesta inválida');
+    if(Array.isArray(data.advisors)){
+      data.advisors.forEach(a=>{ if(a && a.name) upsertVendorByName(a.name, a.zone); });
+    }
     const seenSheetIds = new Set();
     (data.records||[]).forEach(r=>{
       if(!r.vendedor || !validISODate(r.fecha)) return;
       const v = upsertVendorByName(r.vendedor, r.zona);
+      if(!v) return;
       const remoteId = String(r.recordId||'').trim();
       let id = remoteId ? 'sheet_'+remoteId : ('legacy_'+normalize(r.vendedor)+'_'+r.fecha);
       seenSheetIds.add(id);
@@ -835,22 +833,20 @@ async function syncFromSheet(showToast){
       if(idx<0 && !remoteId){ idx=dailyRecords.findIndex(x=>x.source!=='sheet' && x.vendorId===v.id && x.date===r.fecha); if(idx>=0){ dailyRecords[idx].id=id; dailyRecords[idx].source='sheet'; } }
       if(idx>=0) dailyRecords[idx]={...dailyRecords[idx],...rec}; else dailyRecords.push(rec);
     });
-    // Quita de la caché solo los registros previamente originados en la Sheet que ya no existen allí.
     dailyRecords = dailyRecords.filter(r=>r.source!=='sheet' || seenSheetIds.has(r.id));
     const seenSheetMetaKeys = new Set();
     (data.metas||[]).forEach(m=>{
       if(!m.vendedor || !validPeriod(m.periodo)) return;
-      const v = upsertVendorByName(m.vendedor, ''); const id = 'm_'+v.id+'_'+m.periodo;
+      const v = upsertVendorByName(m.vendedor, '');
+      if(!v) return;
+      const id = 'm_'+v.id+'_'+m.periodo;
       const key = normalize(v.name)+'|'+m.periodo; seenSheetMetaKeys.add(key);
       const ex = metas.find(x=>x.id===id || (x.vendorId===v.id && x.period===m.periodo));
       if(ex){ ex.id=id; ex.metaVenta=parseCLNumber(m.metaVenta); ex.source='sheet'; ex.manual=false; ex.diasTotales=ex.diasTotales||autoBusinessDays(m.periodo); }
       else metas.push({id,vendorId:v.id,period:m.periodo,metaVenta:parseCLNumber(m.metaVenta),diasTotales:autoBusinessDays(m.periodo),diasTranscurridos:0,manual:false,source:'sheet'});
     });
-    // La Sheet manda para las metas que nacieron allí: si se borran remotamente,
-    // también salen de la caché. Se conservan metas locales aún no confirmadas.
     metas = metas.filter(m=>m.source!=='sheet' || seenSheetMetaKeys.has(normalize((vendors.find(v=>v.id===m.vendorId)||{}).name||'')+'|'+m.period));
     (data.diasHabiles||[]).forEach(d=>{ if(validPeriod(d.periodo) && parseCLNumber(d.dias)>0) diasHabilesPorPeriodo[d.periodo]=parseCLNumber(d.dias); });
-    // Historial de Crítico compartido entre celular y computador mediante Google Sheets.
     const localHistory=load(LS_HISTORY, []), remoteHistory=Array.isArray(data.criticalHistory)?data.criticalHistory:[];
     const remoteKeys=new Set(remoteHistory.map(h=>String(h.vendorId)+'|'+String(h.period)));
     localHistory.forEach(h=>{ if(h.vendorId && h.period && !remoteKeys.has(String(h.vendorId)+'|'+String(h.period))) sendToSheet({action:'criticalHistoryUpsert',...h}); });
@@ -886,7 +882,6 @@ function normalizeQueuedPeriod(value){
   return s;
 }
 async function postToSheet(body){
-  // Repara también los 8 cambios antiguos ya guardados en la cola del navegador.
   const payload={...body, token:sheetToken};
   if(payload.periodo!=null) payload.periodo=normalizeQueuedPeriod(payload.periodo);
   if(payload.period!=null) payload.period=normalizeQueuedPeriod(payload.period);
@@ -982,13 +977,13 @@ function aggregateRows(){
     const total = diasHabilesPorPeriodo[row.period] || (m ? (m.diasTotales||autoBusinessDays(row.period)) : autoBusinessDays(row.period));
     const elapsed = (m && m.manual) ? m.diasTranscurridos : autoElapsedDays(row.period);
     const metaVenta = m ? m.metaVenta : 0;
-    const ventaNeta = Math.max(row.factura - row.devol, 0); // Venta Neta Efectiva: Facturado − Devoluciones
+    const ventaNeta = Math.max(row.factura - row.devol, 0);
     const cumplReal = metaVenta>0 ? ventaNeta/metaVenta*100 : 0;
     const forecast = elapsed>0 ? (ventaNeta/elapsed)*total : 0;
     const cumplProy = metaVenta>0 ? forecast/metaVenta*100 : 0;
     const efect = row.visit>0 ? row.compra/row.visit*100 : 0;
     const inf = dailyRecords.some(r=>r.vendorId===row.vendorId && (r.date||'').slice(0,7)===row.period && r.facturadoInformado!==false);
-    const ventaDiariaNecesaria = (metaVenta>0 && total>0) ? metaVenta/total : 0; // sin estresar, de referencia
+    const ventaDiariaNecesaria = (metaVenta>0 && total>0) ? metaVenta/total : 0;
     return { vendorId:row.vendorId, vendorName:v?v.name:'—', zone:v?v.zone:'—', period:row.period, meta:metaVenta, venta:row.venta, devol:row.devol, ventaNeta,
       cumplReal, forecast, cumplProy, factura:row.factura, quiebre:Math.max(row.venta-row.factura,0), visit:row.visit, compra:row.compra, efect, nuevos:row.nuevos,
       diasTotales:total, ventaDiariaNecesaria, status: inf ? statusOf(cumplReal,row.nuevos,total>0?(elapsed/total*100):100) : {level:'upcoming',label:'Sin curse cargado',desc:'Aún no hay contratos cursados cargados; no se evalúa para evitar falsos críticos.',icon:'⚪'}, facturadoInformado:inf };
@@ -1009,7 +1004,6 @@ function filteredRows(){
     return true;
   });
 }
-
 
 function extractUfMixFromObs(obs){
   const str = String(obs||'');
@@ -1379,9 +1373,20 @@ document.getElementById('vSave').onclick=()=>{
   const id=document.getElementById('vId').value, name=document.getElementById('vName').value.trim(), zone=document.getElementById('vZone').value.trim();
   if(!name) return notify('Ingresa el nombre del asesor');
   let renamed=null;
-  if(id){ const v=vendors.find(x=>x.id===id); if(v && (v.name!==name || v.zone!==zone)) renamed={oldName:v.name,newName:name,zone}; v.name=name; v.zone=zone; } else { vendors.push({id:uid(), name, zone}); }
+  if(id){
+    const v=vendors.find(x=>x.id===id);
+    if(v && (v.name!==name || v.zone!==zone)) renamed={oldName:v.name,newName:name,zone};
+    if(v){ v.name=name; v.zone=zone; }
+  } else {
+    vendors.push({id:uid(), name, zone});
+  }
+  window.vendors = vendors;
   save(LS.v, vendors); closeModal('mVendor'); render();
-  if(renamed && sheetUrl) sendToSheet({action:'updateVendor',oldName:renamed.oldName,newName:renamed.newName,zona:renamed.zone});
+  if(!id && sheetUrl){
+    sendToSheet({action:'upsertVendor', vendedor:name, zona:zone});
+  } else if(renamed && sheetUrl){
+    sendToSheet({action:'updateVendor',oldName:renamed.oldName,newName:renamed.newName,zona:renamed.zone});
+  }
 };
 document.getElementById('vDel').onclick=()=>{
   const id=document.getElementById('vId').value; if(!id) return;
@@ -1644,8 +1649,6 @@ document.getElementById('btnTheme').onclick=()=>{
   document.getElementById('btnTheme').textContent = next==='dark' ? '☀️' : '🌙';
 };
 
-
-// Acciones de la portada: derivan a botones existentes para conservar la lógica original.
 const landingEnterBtn = document.getElementById('landingEnter');
 if (landingEnterBtn) landingEnterBtn.addEventListener('click', () => { const oldHero=document.getElementById('landingHero'); const oldBottom=document.querySelector('.landing-bottom'); if(oldHero) oldHero.style.display='none'; if(oldBottom) oldBottom.style.display='none'; const intro=document.getElementById('nexusIntro'); if(intro) intro.style.display='none'; document.getElementById('dashboardTop').scrollIntoView({behavior:'instant',block:'start'}); });
 const landingRecordBtn = document.getElementById('landingRecord');
@@ -1658,8 +1661,6 @@ setInterval(()=>{ if(sheetUrl && !document.hidden) syncFromSheet(false); }, 1200
 document.addEventListener('visibilitychange', ()=>{ if(!document.hidden && sheetUrl) syncFromSheet(false); });
 window.addEventListener('online', ()=>{ if(sheetUrl) syncFromSheet(false); });
 </script>
-
-
 
 <style>
 #nexusDiag{margin:18px 0;padding:18px;border:1px solid var(--border);border-radius:16px;background:var(--surface);box-shadow:var(--shadow)}
@@ -1711,7 +1712,7 @@ window.addEventListener('online', ()=>{ if(sheetUrl) syncFromSheet(false); });
  const levelD=r=>{const l=r.status?.level;if(l==='red')return 'red';if(l==='yellow')return 'yellow';if(l==='green'||l==='excellent')return 'green';return 'other'};
  const labelD=l=>l==='red'?'ROJO · Intervención':l==='yellow'?'AMARILLO · Seguimiento':l==='green'?'VERDE · Buen desempeño':'Por iniciar';
  function recommendations(r,l){const a=[];if(l==='red'){a.push('Revisar brecha de contratos ingresados/cursados y definir 2–3 acciones en terreno inmediatas.');if((r.nuevos||0)<(settings.nuevosThreshold||2))a.push('Reforzar prospección en frío y solicitud de referidos; hoy registra '+(r.nuevos||0)+'.');a.push('Realizar acompañamiento en terreno (coaching) y revisar avance en 48 horas.')}else if(l==='yellow'){a.push('Revisar cotizaciones NF abiertas y planificar cierres con doble alternativa.');a.push('Definir una meta semanal concreta y revisar al cierre de semana.')}else if(l==='green'){a.push('Mantener las prácticas que sostienen el cumplimiento.');a.push('Identificar una práctica replicable para compartir con el equipo.')}return a}
- function explain(r,l){const actual=Number(r.cumplReal)||0, forecast=Number(r.cumplProy)||0, visit=Number(r.visit)||0, compra=Number(r.compra)||0;const parts=['Cumplimiento real cursado: '+actual.toFixed(1)+'% de la meta.', 'Proyección: '+forecast.toFixed(1)+'%.','Cursado neto efectivo: '+moneyD(r.ventaNeta)+' de '+moneyD(r.meta)+'.','Entrevistas: '+visit+'; contratos ingresados: '+compra+'; tasa de cierre: '+(visit?((compra/visit)*100).toFixed(1):'0.0')+'%.','Referidos/prospectos nuevos: '+(r.nuevos||0)+'.'];if(l==='red')parts.push('El estado crítico se explica por los criterios actuales de ritmo de venta y captación; validar los registros antes de atribuir causas.');else if(l==='yellow')parts.push('La captación cumple el criterio vigente, pero el ritmo de venta requiere seguimiento.');else if(l==='green')parts.push('Cumple el criterio vigente de ritmo de venta; revisar la captación si el estado es “En Meta” y no “Excelente”.');return parts}
+ function explain(r,l){const actual=Number(r.cumplReal)||0, forecast=Number(r.cumplProy)||0, visit=Number(r.visit)||0, compra=Number(r.compra)||0;const parts=['Cumplimiento real cursado: '+actual.toFixed(1)+'% de la meta.', 'Proyección: '+forecast.toFixed(1)+'%','Cursado neto efectivo: '+moneyD(r.ventaNeta)+' de '+moneyD(r.meta)+'.','Entrevistas: '+visit+'; contratos ingresados: '+compra+'; tasa de cierre: '+(visit?((compra/visit)*100).toFixed(1):'0.0')+'%.','Referidos/prospectos nuevos: '+(r.nuevos||0)+'.'];if(l==='red')parts.push('El estado crítico se explica por los criterios actuales de ritmo de venta y captación; validar los registros antes de atribuir causas.');else if(l==='yellow')parts.push('La captación cumple el criterio vigente, pero el ritmo de venta requiere seguimiento.');else if(l==='green')parts.push('Cumple el criterio vigente de ritmo de venta; revisar la captación si el estado es “En Meta” y no “Excelente”.');return parts}
  function planOwner(){return ($d('ndiOwner')?.value||localStorage.getItem('ps_diag_owner_v1')||'Gerencia').trim()||'Gerencia'}
  function planReview(l){return $d('ndiReview')?.value||localStorage.getItem('ps_diag_review_v1')||localISODate(new Date(nowTz().getTime()+((l==='red')?2:7)*86400000))}
  function reportText(r,l){return ['DIAGNÓSTICO INTELIGENTE NEXUS','Asesor: '+r.vendorName,'Parque / Sector: '+(r.zone||'—'),'Período: '+r.period,'Estado: '+labelD(l),'Fecha: '+new Date().toLocaleString('es-CL'),'','RESUMEN','Meta: '+moneyD(r.meta),'Cursado neto efectivo: '+moneyD(r.ventaNeta),'Cumplimiento real: '+(Number(r.cumplReal)||0).toFixed(1)+'%','Proyección de cierre: '+(Number(r.cumplProy)||0).toFixed(1)+'%','Entrevistas: '+(r.visit||0),'Contratos ingresados: '+(r.compra||0),'Tasa de cierre: '+(Number(r.efect)||0).toFixed(1)+'%','Clientes nuevos: '+(r.nuevos||0),'','ANÁLISIS',...explain(r,l),'','PLAN DE ACCIÓN','Responsable: '+planOwner(),'Fecha de revisión: '+planReview(l),...recommendations(r,l).map((x,i)=>(i+1)+'. '+x),'','Nota: las recomendaciones son acciones sugeridas, no causas confirmadas.'].join('\n')}
@@ -1720,12 +1721,10 @@ window.addEventListener('online', ()=>{ if(sheetUrl) syncFromSheet(false); });
  function renderDiagnostics(){if(typeof aggregateRows!=='function')return;const rows=getActiveRows();const counts={red:0,yellow:0,green:0};rows.forEach(r=>counts[levelD(r)]++);$d('ndiRed').textContent=counts.red;$d('ndiYellow').textContent=counts.yellow;$d('ndiGreen').textContent=counts.green;
   $d('ndiRows').innerHTML=rows.length?rows.slice().sort((a,b)=>({red:0,yellow:1,green:2}[levelD(a)]??3)-({red:0,yellow:1,green:2}[levelD(b)]??3)).map(r=>{const l=levelD(r), actions=recommendations(r,l);return `<article class="diag-row"><div style="flex:1"><strong>${escD(r.vendorName)}</strong> <span class="diag-pill ${l==='red'?'diag-red':l==='yellow'?'diag-yellow':'diag-green'}">${labelD(l)}</span><p>${escD(explain(r,l).slice(0,4).join(' '))}</p><p><b>Acciones:</b> ${escD(actions.join(' · '))}</p></div><button type="button" data-ndi-report="${escD(r.vendorId)}">Ver informe</button></article>`}).join(''):'<div class="diag-row">No hay vendedores evaluables en el período seleccionado. Revisa el período, las metas y los registros.</div>';
   $d('ndiRows').querySelectorAll('[data-ndi-report]').forEach(b=>b.onclick=()=>{const r=rows.find(x=>String(x.vendorId)===b.dataset.ndiReport);if(!r)return;const l=levelD(r),text=reportText(r,l);const w=window.open('','_blank');if(w){w.document.write('<!doctype html><html lang="es"><meta charset="utf-8"><title>Diagnóstico NEXUS</title><body style="font:15px system-ui;max-width:850px;margin:32px auto;padding:0 16px;white-space:pre-wrap"><button onclick="window.print()">Imprimir / Guardar PDF</button><h1>Diagnóstico Inteligente NEXUS</h1><pre style="white-space:pre-wrap;font:inherit">'+escD(text)+'</pre></body></html>');w.document.close()}else{navigator.clipboard?.writeText(text).then(()=>notify('Informe copiado')).catch(()=>notify('Permite ventanas emergentes para abrir el informe'))}});
-  // Primer render fija línea base sin disparar falsos correos por estados ya existentes.
   const prev=(()=>{try{return JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){return {}}})();const next={...prev};const changes=[];
   rows.forEach(r=>{const l=levelD(r),key=r.vendorId+'|'+r.period,old=prev[key];if(initialised&&old&&old!==l&&l!=='other'){changes.push({vendorId:r.vendorId,vendorName:r.vendorName,period:r.period,from:old,to:l,report:reportText(r,l)});}next[key]=l});
   try{localStorage.setItem(KEY,JSON.stringify(next))}catch(e){};initialised=true;
   changes.forEach(c=>{const msg='Cambio de estado: '+c.vendorName+' pasó de '+c.from+' a '+c.to+'.';$d('ndiStatus').textContent=msg+' Preparando informe por correo…';postAction({action:'diagnosticTransition',...c,recipient:$d('ndiEmail').value.trim()||localStorage.getItem(EMAIL)||''}).then(()=>{$d('ndiStatus').textContent=msg+' Informe enviado/registrado por Apps Script.'}).catch(e=>{$d('ndiStatus').textContent=msg+' No se confirmó el correo: '+e.message;});});
-  // Enviar snapshot como máximo una vez al día; el trigger diario del servidor envía el resumen.
   const today=localISODate();if(typeof sheetUrl!=='undefined'&&sheetUrl&&localStorage.getItem(DIGEST)!==today){postAction({action:'saveDiagnosticSnapshot',period:($d('fPeriod')?.value)||localPeriod(),rows:rows.map(r=>({vendorId:r.vendorId,vendorName:r.vendorName,zone:r.zone,period:r.period,status:levelD(r),report:reportText(r,levelD(r)),cumplReal:r.cumplReal,cumplProy:r.cumplProy,meta:r.meta,ventaNeta:r.ventaNeta}))}).then(()=>localStorage.setItem(DIGEST,today)).catch(()=>{});}
  }
  $d('ndiEmail').value=(()=>{try{return localStorage.getItem(EMAIL)||''}catch(e){return ''}})();
@@ -1738,7 +1737,6 @@ window.addEventListener('online', ()=>{ if(sheetUrl) syncFromSheet(false); });
  window.addEventListener('nexus:rendered',renderDiagnostics);setTimeout(renderDiagnostics,800);setTimeout(renderDiagnostics,2500);
 })();
 </script>
-
 
 <script id="nexusSidebarLogic">
 (()=>{
@@ -1755,10 +1753,8 @@ window.addEventListener('online', ()=>{ if(sheetUrl) syncFromSheet(false); });
   const byId=id=>document.getElementById(id);
   const target=(id)=>{
     const el=byId(id); if(!el) return false;
-    // Navega al contenedor visual completo, no a un control o gráfico interno.
     let box=el.closest('.table-card, .card, .charts, #nexusDiag, section');
     if(!box) box=el;
-    // En el bloque de gráficos, mostrar juntos barras y torta cuando corresponda.
     if(id==='chartTrend'){
       const charts=byId('chartBar')?.closest('.charts');
       if(charts) box=charts.previousElementSibling?.classList.contains('card') ? charts.previousElementSibling : charts;
@@ -1770,14 +1766,13 @@ window.addEventListener('online', ()=>{ if(sheetUrl) syncFromSheet(false); });
       const top=box.getBoundingClientRect().top + window.pageYOffset - headerH - gap;
       window.scrollTo({top:Math.max(0,top),behavior:'smooth'});
     };
-    // Espera a que el layout termine de actualizarse antes de calcular la posición.
     requestAnimationFrame(()=>requestAnimationFrame(scrollTarget));
     return true;
   };
   switch(key){
    case 'overview': target('dashboardTop');break;
    case 'daily': target('tblDaily');break;
-   case 'trends': target('chartTrend');break; // Abre el bloque de gráficos: tendencia mensual y, justo debajo, barras y torta.
+   case 'trends': target('chartTrend');break;
    case 'performance': target('tbl');break;
    case 'diagnostics': target('nexusDiag');break;
    case 'stress': target('stressDias');break;

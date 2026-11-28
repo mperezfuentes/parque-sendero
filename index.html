@@ -3,62 +3,68 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>NEXUS · Parque del Sendero · Gestión Comercial</title>
+<title>NEXUS · Parque del Sendero · UF · Dinero · Contratos</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
 <script>function nxLoadScript(src){return new Promise(function(res,rej){var s=document.createElement('script');s.src=src;s.onload=res;s.onerror=function(){rej(new Error('No se pudo cargar '+src))};document.head.appendChild(s)})}if(typeof Chart==='undefined'){nxLoadScript('https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.js').catch(function(e){console.error(e)})}</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script>if(typeof html2canvas==='undefined'){nxLoadScript('https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js').catch(function(e){console.error(e)})}</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script>if(!window.jspdf){nxLoadScript('https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js').catch(function(e){console.error(e)})}</script>
+<script>if(!window.jspdf){nxLoadScript('https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.js').catch(function(e){console.error(e)})}</script>
 <style>
-body.nx-lock{overflow:hidden}
+:root,:root[data-theme="light"]{
+  --bg:#eaf1f8;--surface:#ffffff;--surface-2:#f2f7fc;--text:#0b1a2e;--text-dim:#53698a;
+  --border:#d3deec;--accent:#0a7fa6;--accent-dim:#ddf1f8;--green:#0f8a63;--green-bg:#dcf5ec;
+  --yellow:#a16207;--yellow-bg:#fdf0cf;--red:#c8324a;--red-bg:#fde6ea;--excellent:#1565c0;
+  --excellent-bg:#e1edfb;--radius:16px;--shadow:0 10px 30px rgba(8,30,60,.07);
+  --nx-side-bg:#08172b;--nx-side-line:rgba(133,178,220,.16);--nx-side-text:#c6d5e8;--nx-side-muted:#8197b3;--nx-side-cyan:#39d6e8;
+}
+:root[data-theme="dark"]{
+  --bg:#050b18;--surface:#0c1a2e;--surface-2:#112440;--text:#edf7ff;--text-dim:#8caac7;
+  --border:#1f3752;--accent:#55e5ff;--accent-dim:#0f3347;--green:#36e2ac;--green-bg:#0c3a33;
+  --yellow:#f3cb62;--yellow-bg:#3a3018;--red:#ff7a8a;--red-bg:#3d1d2a;--excellent:#4cc3ff;
+  --excellent-bg:#0c3350;--shadow:0 12px 34px rgba(0,0,0,.35);
+}
+html:root[data-theme="dark"] body{background:radial-gradient(ellipse at 80% -8%,#123e68 0,transparent 42%),radial-gradient(ellipse at 0% 100%,#102d52 0,transparent 45%),linear-gradient(160deg,#050b18,#08172b 60%,#061020) fixed}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.4}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.4}
 h1,h2,h3{margin:0;font-weight:650;letter-spacing:-.01em}
 button{font-family:inherit;cursor:pointer}
 input,select,textarea{font-family:inherit}
-.wrap{max-width:1360px;margin:0 auto;padding:20px 20px 60px}
-header.top{position:sticky;top:0;z-index:20;background:var(--surface);border-bottom:1px solid var(--border);padding:14px 20px;padding-top:calc(14px + env(safe-area-inset-top,0px))}
-.top-row{max-width:1360px;margin:0 auto;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.wrap{max-width:1480px;margin:0 auto;padding:22px 20px 60px}
+header.top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--surface) 84%,transparent);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:14px 20px;padding-top:calc(14px + env(safe-area-inset-top,0px))}
+.top-row{max-width:1480px;margin:0 auto;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .brand{display:flex;align-items:center;gap:10px;margin-right:auto}
-.brand .mark{width:34px;height:34px;border-radius:8px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px}
-.brand h1{font-size:17px}
-.brand span{color:var(--text-dim);font-size:12.5px;display:block}
-.btn{border:1px solid var(--border);background:var(--surface-2);color:var(--text);border-radius:7px;padding:8px 12px;font-size:13px;font-weight:550;display:inline-flex;align-items:center;gap:6px;transition:border-color .15s}
-.btn:hover{border-color:var(--accent)}
-.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.brand .mark{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,#12baf3,#36e2ac);color:#04101f;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px}
+.brand h1{font-size:17px;letter-spacing:.08em;font-weight:800}
+.brand span{color:var(--text-dim);font-size:12px;display:block}
+.btn{border:1px solid var(--border);background:var(--surface-2);color:var(--text);border-radius:10px;padding:8px 12px;font-size:13px;font-weight:600;display:inline-flex;align-items:center;gap:6px;transition:border-color .15s,transform .15s}
+.btn:hover{border-color:var(--accent);transform:translateY(-1px)}
+.btn.primary{background:linear-gradient(135deg,#12baf3,#2a6df0);border-color:transparent;color:#fff}
+html:root[data-theme="dark"] .btn.primary{color:#031221}
 .btn.ghost{background:transparent}
-.icon-btn{border:1px solid var(--border);background:var(--surface-2);border-radius:7px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:16px}
-.filters{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}
-.filters select,.filters input{padding:8px 10px;border-radius:7px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:13.5px;min-width:130px}
+.icon-btn{border:1px solid var(--border);background:var(--surface-2);border-radius:10px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:16px}
 
-.mode-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:12px 14px;margin-bottom:14px;background:var(--surface);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow)}
+/* Barra principal de 3 apps en 1: UF · DINERO · CONTRATOS */
+.app-switcher-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:12px 16px;margin-bottom:12px;background:var(--surface);border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow)}
 .mode-tabs{display:flex;gap:8px;flex-wrap:wrap}
-.mode-tab{border:1px solid var(--border);background:var(--surface-2);color:var(--text);border-radius:10px;padding:9px 15px;font-size:13px;font-weight:700;display:inline-flex;align-items:center;gap:6px}
-.mode-tab.active{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 6px 16px rgba(18,186,243,.22)}
-.mode-params{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:12.5px;color:var(--text-dim)}
-.mode-params label{display:inline-flex;align-items:center;gap:6px;font-weight:600;color:var(--text)}
-.mode-params input{width:110px;padding:6px 9px;border-radius:8px;border:1px solid var(--border);background:var(--surface-2);color:var(--text);font-size:13px}
+.mode-tab{border:1px solid var(--border);background:var(--surface-2);color:var(--text);border-radius:12px;padding:9px 16px;font-size:13.5px;font-weight:750;display:inline-flex;align-items:center;gap:8px}
+.mode-tab.active{background:linear-gradient(135deg,#12baf3,#2a6df0);border-color:transparent;color:#fff}
+html:root[data-theme="dark"] .mode-tab.active{color:#031221}
+.fx-controls{display:flex;align-items:center;gap:12px;flex-wrap:wrap;font-size:12.5px}
+.fx-controls label{display:inline-flex;align-items:center;gap:6px;font-weight:650;color:var(--text-dim)}
+.fx-controls input{width:105px;padding:6px 8px;border-radius:8px;border:1px solid var(--border);background:var(--surface-2);color:var(--text);font-weight:600}
 
-.vendor-3x-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:12px;margin-top:10px}
-.v3-card{border:1px solid var(--border);border-radius:12px;padding:14px;background:var(--surface-2)}
-.v3-head{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:10px}
-.v3-head strong{font-size:14px;display:block}
-.v3-head small{color:var(--text-dim);font-size:11.5px}
-.v3-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.v3-box{background:var(--surface);border:1px solid var(--border);border-radius:9px;padding:8px 9px}
-.v3-box .tag{font-size:10.5px;font-weight:700;text-transform:uppercase;color:var(--text-dim)}
-.v3-box .main-num{font-size:13.5px;font-weight:750;margin-top:2px;color:var(--text)}
-.v3-box .sub-num{font-size:11px;color:var(--text-dim);margin-top:2px}
-
-.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:20px}
-.kpi{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow)}
-.kpi .lbl{color:var(--text-dim);font-size:12.5px}
-.kpi .val{font-size:22px;font-weight:700;margin-top:4px}
-.kpi .sub{font-size:12px;color:var(--text-dim);margin-top:2px}
-.status-pill{display:inline-flex;align-items:center;gap:5px;padding:3px 9px;border-radius:20px;font-size:12px;font-weight:650;white-space:nowrap}
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0;padding:12px;background:var(--surface);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow)}
+.filters select,.filters input{padding:8px 10px;border-radius:10px;border:1px solid var(--border);background:var(--surface-2);color:var(--text);font-size:13.5px;min-width:130px;min-height:39px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:12px;margin-bottom:20px}
+.kpi{background:linear-gradient(180deg,var(--surface),color-mix(in srgb,var(--surface) 88%,var(--bg)));border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.kpi::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,#12baf3,#36e2ac)}
+.kpi .lbl{color:var(--text-dim);font-size:12px;font-weight:650}
+.kpi .val{font-size:23px;font-weight:750;margin-top:4px;font-variant-numeric:tabular-nums}
+.kpi .sub{font-size:12px;color:var(--text-dim);margin-top:3px}
+.status-pill{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:99px;font-size:12px;font-weight:650;white-space:nowrap}
 .status-pill.green{background:var(--green-bg);color:var(--green)}
 .status-pill.yellow{background:var(--yellow-bg);color:var(--yellow)}
 .status-pill.red{background:var(--red-bg);color:var(--red)}
@@ -67,41 +73,36 @@ header.top{position:sticky;top:0;z-index:20;background:var(--surface);border-bot
 .kpi-tabs{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap}
 .kpi-tabs button{border:1px solid var(--border);background:var(--surface);color:var(--text-dim);border-radius:20px;padding:6px 14px;font-size:12.5px;font-weight:600}
 .kpi-tabs button.active{background:var(--accent);border-color:var(--accent);color:#fff}
-.progress{height:7px;border-radius:4px;background:var(--surface-2);overflow:hidden;margin-top:6px;border:1px solid var(--border)}
-.progress-fill{height:100%;border-radius:4px}
-.progress-row{display:flex;align-items:center;gap:6px}
-.progress-row .progress{flex:1;margin-top:0}
+.progress{height:8px;border-radius:99px;background:var(--surface-2);overflow:hidden;margin-top:6px;border:1px solid var(--border)}
+.progress-fill{height:100%;border-radius:99px}
 .alert-banner{background:var(--red-bg);border:1px solid var(--red);border-radius:var(--radius);padding:12px 14px;margin-bottom:14px}
 .alert-banner h3{color:var(--red);font-size:14px;margin-bottom:8px}
 .alert-item{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border);flex-wrap:wrap}
 .alert-item:last-child{border-bottom:none}
-.alert-item .actions{display:flex;gap:6px}
-.alert-item .actions a,.alert-item .actions button{border:1px solid var(--border);background:var(--surface);color:var(--text);border-radius:6px;padding:4px 8px;font-size:11.5px;text-decoration:none}
 .stress-bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px}
-.stress-bar select,.stress-bar input{padding:7px 9px;border-radius:7px;border:1px solid var(--border);background:var(--surface-2);color:var(--text);font-size:13px}
-.charts{display:grid;grid-template-columns:1.3fr 1fr;gap:14px;margin-bottom:20px;scroll-margin-top:100px}
-#chartTrend,#tblDaily,#tbl,#nexusDiag,#stressDias,
-.table-card,.card,.charts,section{scroll-margin-top:110px}
-.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)}
-.card h3{font-size:14px;margin-bottom:10px}
+.stress-bar input{padding:7px 9px;border-radius:10px;border:1px solid var(--border);background:var(--surface-2);color:var(--text);font-size:13px;min-height:39px}
+.charts{display:grid;grid-template-columns:1.3fr 1fr;gap:14px;margin-bottom:20px}
+#chartTrend,#tblDaily,#tbl,#nexusDiag,#stressDias,.table-card,.card,.charts,section{scroll-margin-top:110px}
+.card{background:linear-gradient(180deg,var(--surface),color-mix(in srgb,var(--surface) 88%,var(--bg)));border:1px solid var(--border);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+.card h3{font-size:14px;font-weight:750;margin-bottom:10px}
 .card canvas{max-height:280px}
 .legend-row{display:flex;gap:14px;margin-top:10px;font-size:12px;color:var(--text-dim);flex-wrap:wrap}
 .legend-row span{display:inline-flex;align-items:center;gap:5px}
 .dot{width:9px;height:9px;border-radius:50%;display:inline-block}
-.table-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
-.table-head{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-bottom:1px solid var(--border)}
+.table-card{background:linear-gradient(180deg,var(--surface),color-mix(in srgb,var(--surface) 88%,var(--bg)));border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+.table-head{display:flex;justify-content:space-between;align-items:center;padding:16px 18px;border-bottom:1px solid var(--border)}
 .tbl-scroll{overflow-x:auto}
 table{width:100%;border-collapse:collapse;font-size:12.5px;min-width:1500px}
-th,td{padding:9px 11px;text-align:left;white-space:nowrap;border-bottom:1px solid var(--border)}
-th{color:var(--text-dim);font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.03em;background:var(--surface-2)}
-tbody tr:hover{background:var(--surface-2)}
+th,td{padding:10px 12px;text-align:left;white-space:nowrap;border-bottom:1px solid var(--border)}
+th{color:var(--text-dim);font-weight:650;font-size:11px;text-transform:uppercase;letter-spacing:.04em;background:var(--surface-2)}
+tbody tr:hover td{background:var(--accent-dim)}
 td.num{text-align:right;font-variant-numeric:tabular-nums}
 .row-actions{display:flex;gap:6px}
 .row-actions button{border:none;background:transparent;color:var(--text-dim);font-size:13px}
 .row-actions button:hover{color:var(--accent)}
-.modal-bg{position:fixed;inset:0;background:rgba(10,12,20,.5);display:none;align-items:center;justify-content:center;z-index:50;padding:16px}
+.modal-bg{position:fixed;inset:0;background:rgba(3,8,18,.72);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;z-index:50;padding:16px}
 .modal-bg.open{display:flex}
-.modal{background:var(--surface);border-radius:12px;padding:22px;max-width:600px;width:100%;max-height:88vh;overflow:auto;border:1px solid var(--border)}
+.modal{background:var(--surface);border-radius:20px;padding:22px;max-width:600px;width:100%;max-height:88vh;overflow:auto;border:1px solid var(--border);box-shadow:0 30px 90px rgba(0,0,0,.5)}
 .modal h2{font-size:16px;margin-bottom:4px}
 .modal-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;position:sticky;top:-16px;z-index:3;background:var(--surface);padding:2px 0 8px}
 .modal .sub{font-size:12.5px;color:var(--text-dim);margin-bottom:14px}
@@ -109,50 +110,184 @@ td.num{text-align:right;font-variant-numeric:tabular-nums}
 .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
 .field{margin-bottom:10px}
 .field label{display:block;font-size:12px;color:var(--text-dim);margin-bottom:4px}
-.field input,.field select,.field textarea{width:100%;padding:8px 10px;border-radius:7px;border:1px solid var(--border);background:var(--surface-2);color:var(--text);font-size:13.5px}
-.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:16px}
+.field input,.field select,.field textarea{width:100%;padding:8px 10px;border-radius:10px;border:1px solid var(--border);background:var(--surface-2);color:var(--text);font-size:13.5px}
+.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:16px;flex-wrap:wrap}
 .help{font-size:12px;color:var(--text-dim);margin-top:8px;line-height:1.5}
 .help code{font-size:11px;background:var(--surface-2);padding:1px 4px;border-radius:4px}
 .empty{padding:40px 20px;text-align:center;color:var(--text-dim)}
 .list{border:1px solid var(--border);border-radius:8px;margin-top:14px;max-height:200px;overflow:auto}
-.list-row{display:flex;justify-content:space-between;align-items:center;padding:8px 12px;font-size:12.5px;border-bottom:1px solid var(--border)}
+.list-row{display:flex;justify-content:space-between;align-items:center;padding:8px 12px;font-size:12.5px;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:8px}
 .list-row:last-child{border-bottom:none}
 .list-row .la{color:var(--text-dim)}
 .list-row button{border:none;background:transparent;color:var(--accent);font-size:12px;margin-left:8px}
-.only-print{display:none}
 a.btn{text-decoration:none}
-#toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--text);color:var(--surface);padding:10px 16px;border-radius:8px;font-size:13px;z-index:100;display:none;max-width:90%}
+#toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:#0d2b48;color:#edf7ff;border:1px solid #2edbff66;padding:10px 16px;border-radius:12px;font-size:13px;z-index:100;display:none;max-width:90%}
 #overlay{position:fixed;inset:0;background:var(--bg);z-index:90;display:none;align-items:center;justify-content:center;font-weight:600;color:var(--text)}
 #tblStress{min-width:900px}
-#printHeader{margin-bottom:18px}
-#printHeader h2{font-size:20px;margin-bottom:4px}
-#printHeader .meta{font-size:12.5px;color:var(--text-dim)}
-@media (max-width:820px){ .charts{grid-template-columns:1fr} .grid3{grid-template-columns:1fr} }
-@media (max-width:600px){ .v3-cols{grid-template-columns:1fr} .wrap{padding:12px 10px 40px} }
 
-:root,:root[data-theme="light"]{--bg:#eaf1f8;--surface:#ffffff;--surface-2:#f2f7fc;--text:#0b1a2e;--text-dim:#53698a;--border:#d3deec;--accent:#0a7fa6;--accent-dim:#ddf1f8;--green:#0f8a63;--green-bg:#dcf5ec;--yellow:#a16207;--yellow-bg:#fdf0cf;--red:#c8324a;--red-bg:#fde6ea;--excellent:#1565c0;--excellent-bg:#e1edfb;--radius:16px;--shadow:0 10px 30px rgba(8,30,60,.07)}
-:root[data-theme="dark"]{--bg:#050b18;--surface:#0c1a2e;--surface-2:#112440;--text:#edf7ff;--text-dim:#8caac7;--border:#1f3752;--accent:#55e5ff;--accent-dim:#0f3347;--green:#36e2ac;--green-bg:#0c3a33;--yellow:#f3cb62;--yellow-bg:#3a3018;--red:#ff7a8a;--red-bg:#3d1d2a;--excellent:#4cc3ff;--excellent-bg:#0c3350;--shadow:0 12px 34px rgba(0,0,0,.35)}
-html:root[data-theme="dark"] body{background:radial-gradient(ellipse at 80% -8%,#123e68 0,transparent 42%),radial-gradient(ellipse at 0% 100%,#102d52 0,transparent 45%),linear-gradient(160deg,#050b18,#08172b 60%,#061020) fixed}
-html header.top{background:color-mix(in srgb,var(--surface) 82%,transparent);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
-html .brand .mark{border-radius:12px;background:linear-gradient(135deg,#12baf3,#36e2ac);color:#04101f}
-html .card,html .kpi,html .table-card,html .modal,html .alert-banner{border-radius:var(--radius);background:linear-gradient(180deg,var(--surface),color-mix(in srgb,var(--surface) 88%,var(--bg)));box-shadow:var(--shadow)}
-html .kpi{position:relative;overflow:hidden;padding:16px 18px}
-html .kpi::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,#12baf3,#36e2ac)}
-html .kpi .val{font-size:24px;font-variant-numeric:tabular-nums}
+/* Landing & Intro */
+#landingHero{position:relative;isolation:isolate;overflow:hidden;padding:clamp(32px,5.8vw,76px) clamp(18px,5vw,70px) clamp(34px,5vw,62px);color:#f6f8ff;background:radial-gradient(ellipse at 78% 20%,rgba(53,197,213,.22),transparent 33%),radial-gradient(ellipse at 12% 90%,rgba(91,124,250,.28),transparent 35%),linear-gradient(125deg,#101a33 0%,#14294a 52%,#132e47 100%)}
+.landing-inner{max-width:1340px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(320px,.95fr);align-items:center;gap:clamp(28px,5vw,76px)}
+.landing-copy{max-width:680px}
+.landing-eyebrow{display:inline-flex;align-items:center;gap:9px;border:1px solid rgba(173,201,255,.25);background:rgba(255,255,255,.065);padding:7px 12px;border-radius:999px;font-size:11px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:#c9dcff}
+.landing-eyebrow i{width:7px;height:7px;border-radius:50%;background:#45dfc1}
+.landing-copy h2{font-size:clamp(34px,4.7vw,61px);line-height:1.04;letter-spacing:-.05em;font-weight:800;margin:20px 0 18px}
+.landing-copy h2 em{font-style:normal;color:#73e0dc}
+.landing-copy p{font-size:clamp(14px,1.4vw,17px);line-height:1.7;color:#c1cce0;margin:0}
+.landing-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.landing-btn{min-height:46px;border-radius:12px;padding:0 18px;display:inline-flex;align-items:center;justify-content:center;gap:10px;font:700 13px inherit;cursor:pointer}
+.landing-btn.primary{border:1px solid #7890ff;background:linear-gradient(135deg,#5575ff,#4560e8);color:#fff}
+.landing-btn.secondary{border:1px solid rgba(215,229,255,.25);background:rgba(255,255,255,.06);color:#f4f7ff}
+.landing-trust{display:flex;gap:20px;flex-wrap:wrap;margin-top:24px;color:#aebdd5;font-size:11.5px}
+.landing-window{border:1px solid rgba(195,217,255,.23);background:rgba(13,25,48,.79);backdrop-filter:blur(18px);border-radius:20px;padding:17px;box-shadow:0 30px 80px rgba(0,0,0,.3)}
+.window-top{display:flex;align-items:center;gap:6px;padding-bottom:12px;border-bottom:1px solid rgba(214,229,255,.11)}
+.window-dot{width:7px;height:7px;border-radius:50%;background:#60708d}
+.window-label{margin-left:8px;font-size:10px;color:#9eafcb;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.mock-title{display:flex;justify-content:space-between;align-items:center;margin:14px 0 12px;color:#f2f6ff}
+.mock-pill{font-size:9px;border-radius:99px;background:rgba(60,215,183,.12);color:#71e5ca;padding:5px 8px}
+.mock-kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+.mock-kpi{padding:11px 10px;border:1px solid rgba(195,217,255,.12);border-radius:11px;background:rgba(255,255,255,.035)}
+.mock-kpi span{display:block;font-size:9px;color:#a9b9d2}
+.mock-kpi strong{display:block;color:#f4f7ff;font-size:17px;margin:5px 0 3px}
+.mock-kpi small{font-size:9px;color:#61ddbd}
+.landing-bottom{background:var(--surface);border-bottom:1px solid var(--border)}
+.landing-features{max-width:1340px;margin:0 auto;padding:20px clamp(18px,5vw,70px);display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.landing-feature{display:flex;align-items:flex-start;gap:12px;padding:10px}
+.landing-feature .feature-icon{width:36px;height:36px;flex:0 0 36px;border-radius:11px;background:var(--accent-dim);color:var(--accent);display:grid;place-items:center;font-size:16px}
+.landing-feature strong{display:block;font-size:12.5px;color:var(--text)}
+.landing-feature small{display:block;font-size:11.5px;color:var(--text-dim)}
+
+/* Sidebar */
+#nxSidebar{position:fixed;z-index:9000;left:0;top:0;bottom:0;width:258px;padding:20px 14px 16px;background:linear-gradient(180deg,#08172b 0%,#0b2038 55%,#091629 100%);border-right:1px solid var(--nx-side-line);color:#eaf4ff;display:none;flex-direction:column;gap:14px;overflow-y:auto}
+body.nx-sidebar-on #nxSidebar{display:flex}
+body.nx-sidebar-on #dashboardTop,body.nx-sidebar-on .wrap,body.nx-sidebar-on #nexusDiag{margin-left:258px;width:calc(100% - 258px)}
+.nxs-brand{display:flex;align-items:center;gap:11px;padding:4px 7px 16px;border-bottom:1px solid var(--nx-side-line)}
+.nxs-logo{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(140deg,#153f66,#0d263f);border:1px solid rgba(57,214,232,.48);color:var(--nx-side-cyan);font-size:18px;font-weight:900}
+.nxs-brand strong{display:block;font-size:15px;letter-spacing:1.5px}
+.nxs-brand small{display:block;color:var(--nx-side-muted);font-size:9px;letter-spacing:1.1px;margin-top:4px}
+.nxs-caption{font-size:9px;letter-spacing:1.7px;color:#6f89a8;font-weight:800;padding:4px 10px 0}
+.nxs-nav{display:grid;gap:7px}
+.nxs-link{width:100%;min-height:40px;border:1px solid rgba(112,158,204,.2);background:linear-gradient(180deg,rgba(29,57,86,.94) 0%,rgba(14,36,60,.98) 100%);color:var(--nx-side-text);padding:9px 11px;border-radius:11px;display:flex;align-items:center;gap:10px;text-align:left;font:600 12px/1.25 inherit}
+.nxs-link:hover,.nxs-link.active{color:#fff;border-color:rgba(57,214,232,.7)}
+.nxs-foot{margin-top:auto;border:1px solid var(--nx-side-line);border-radius:12px;padding:12px;background:rgba(255,255,255,.025);font-size:10px;color:var(--nx-side-muted)}
+#nxsMobileToggle{position:fixed;z-index:9001;left:12px;bottom:14px;display:none;border:1px solid rgba(57,214,232,.4);border-radius:13px;background:#0a1c31;color:#dffaff;padding:11px 13px;font-size:17px}
+#nxsScrim{display:none}
+
+/* Cinema Intro */
+#nxCinema{position:fixed;inset:0;z-index:100000;display:grid;place-items:center;color:#edf7ff;background:linear-gradient(135deg,#050b18,#08172b 55%,#061020);transition:opacity .6s ease,visibility .6s}
+#nxCinema.out{opacity:0;visibility:hidden}
+.cn-word{font-weight:800;font-size:clamp(44px,14vw,130px);letter-spacing:.14em;text-align:center}
+.cn-sub{font-size:13px;letter-spacing:.3em;color:#71dff5;text-align:center;margin-top:8px}
+#cnSkip{position:absolute;right:18px;bottom:18px;color:#8caac7;background:transparent;border:1px solid #28435e;border-radius:999px;padding:8px 15px}
+
+/* Diagnostics */
+#nexusDiag{margin:18px 0;padding:18px;border:1px solid var(--border);border-radius:16px;background:var(--surface);box-shadow:var(--shadow)}
+#nexusDiag .diag-sub{color:var(--text-dim);font-size:13px;margin:6px 0 14px}
+#nexusDiag .diag-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+#nexusDiag .diag-stat{border:1px solid var(--border);border-radius:12px;padding:12px}
+#nexusDiag .diag-stat b{display:block;font-size:24px;margin:4px 0}
+#nexusDiag .diag-list{display:grid;gap:8px;margin-top:12px}
+#nexusDiag .diag-row{border:1px solid var(--border);border-radius:12px;padding:12px;display:flex;gap:10px;align-items:flex-start;justify-content:space-between}
+#nexusDiag .diag-pill{font-size:11px;font-weight:800;border-radius:999px;padding:4px 8px;white-space:nowrap}
+#nexusDiag .diag-red{background:#FCE8E8;color:#B42318}#nexusDiag .diag-yellow{background:#FFF1D6;color:#9A6700}#nexusDiag .diag-green{background:#DDF7E5;color:#18794E}
+#nexusDiag .diag-status{font-size:12px;color:var(--text-dim);margin-top:10px}
+
+@media(max-width:900px){
+  .landing-inner,.charts,#nexusDiag .diag-grid,.landing-features{grid-template-columns:1fr}
+  #nxSidebar{width:270px;transform:translateX(-105%);transition:transform .22s}
+  body.nx-sidebar-on.nxs-menu-open #nxSidebar{transform:translateX(0)}
+  body.nx-sidebar-on #dashboardTop,body.nx-sidebar-on .wrap,body.nx-sidebar-on #nexusDiag{margin-left:0;width:100%}
+  #nxsMobileToggle{display:block}
+  body.nxs-menu-open #nxsScrim{display:block;position:fixed;inset:0;z-index:8999;background:rgba(2,8,18,.55)}
+}
 </style>
 </head>
 <body>
+
+<section id="nxCinema" aria-label="Presentación de NEXUS">
+  <div>
+    <div class="cn-word">NEXUS</div>
+    <div class="cn-sub">UF · DINERO ($M) · CONTRATOS</div>
+  </div>
+  <button id="cnSkip" type="button">Saltar</button>
+</section>
+
+<aside id="nxSidebar" aria-label="Navegación principal NEXUS">
+  <div class="nxs-brand"><div class="nxs-logo">N</div><div><strong>NEXUS</strong><small>3 APPS EN 1 · SENDERO</small></div></div>
+  <div class="nxs-caption">VISTA GLOBAL INTERCONECTADA</div>
+  <nav class="nxs-nav">
+    <button class="nxs-link active" data-nxs="overview"><span>▦</span>Resumen ejecutivo</button>
+    <button class="nxs-link" data-nxs="daily"><span>◷</span>Producción diaria necesaria</button>
+    <button class="nxs-link" data-nxs="trends"><span>⌁</span>Tendencias y gráficos</button>
+    <button class="nxs-link" data-nxs="performance"><span>▤</span>Rendimiento por asesor</button>
+    <button class="nxs-link" data-nxs="diagnostics"><span>◉</span>Diagnóstico inteligente</button>
+    <button class="nxs-link" data-nxs="stress"><span>⚡</span>Simulación de estrés</button>
+  </nav>
+  <div class="nxs-caption">GESTIÓN Y SEGUIMIENTO</div>
+  <nav class="nxs-nav">
+    <button class="nxs-link" data-nxs="records"><span>▣</span>Registros diarios (Form)</button>
+    <button class="nxs-link" data-nxs="reports"><span>↗</span>Informes (3 formatos)</button>
+  </nav>
+  <div class="nxs-caption">ADMINISTRACIÓN</div>
+  <nav class="nxs-nav">
+    <button class="nxs-link" data-nxs="team"><span>♙</span>Asesores</button>
+    <button class="nxs-link" data-nxs="goals"><span>◎</span>Metas (UF / $M / Cttos)</button>
+    <button class="nxs-link" data-nxs="settings"><span>⚙</span>Configuración y umbrales</button>
+    <button class="nxs-link" data-nxs="sheets"><span>⇄</span>Conexión Google Sheets</button>
+  </nav>
+  <div class="nxs-foot"><b>Interconectado</b><br>Un solo form actualiza UF, Dinero ($M) y Contratos.</div>
+</aside>
+<div id="nxsScrim"></div>
+<button id="nxsMobileToggle" type="button" aria-label="Abrir menú">☰</button>
+
 <div id="toast"></div>
 <div id="overlay"><div>Generando informe…</div></div>
 
+<section id="landingHero" aria-label="Bienvenida a NEXUS">
+  <div class="landing-inner">
+    <div class="landing-copy">
+      <div class="landing-eyebrow"><i></i> 3 vistas interconectadas en tiempo real</div>
+      <h2>Tu gestión en UF, dinero y contratos.<br><em>Todo sincronizado en un clic.</em></h2>
+      <p>Ingresa una sola vez desde el formulario diario o define metas en UF, millones de pesos ($ CLP) o cantidad de contratos: todo el panel, gráficos e informes se actualizan en los 3 formatos.</p>
+      <div class="landing-actions">
+        <button type="button" class="landing-btn primary" id="landingEnter">Entrar al panel ↘</button>
+        <button type="button" class="landing-btn secondary" id="landingRecord">＋ Registrar actividad</button>
+      </div>
+      <div class="landing-trust">
+        <span>✓ <b>Tab UF</b></span>
+        <span>✓ <b>Tab Dinero ($M)</b></span>
+        <span>✓ <b>Tab Contratos</b></span>
+      </div>
+    </div>
+    <div class="landing-visual">
+      <div class="landing-window">
+        <div class="window-top"><i class="window-dot"></i><i class="window-dot"></i><i class="window-dot"></i><span class="window-label">3 apps en 1 · Parque del Sendero</span></div>
+        <div class="mock-title"><strong>Motor unificado</strong><span class="mock-pill">SINCRONIZADO</span></div>
+        <div class="mock-kpis">
+          <div class="mock-kpi"><span>VISTA 1</span><strong>UF</strong><small>✓ Base oficial</small></div>
+          <div class="mock-kpi"><span>VISTA 2</span><strong>Dinero ($M)</strong><small>↗ UF × Valor CLP</small></div>
+          <div class="mock-kpi"><span>VISTA 3</span><strong>Contratos</strong><small>◎ Cttos reales/est.</small></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="landing-bottom">
+  <div class="landing-features">
+    <div class="landing-feature"><div class="feature-icon">◫</div><div><strong>Cambia de tab y replica todo</strong><small>Pasa entre UF, Dinero ($M) y Contratos en KPIs, ritmo diario, gráficos y tabla.</small></div></div>
+    <div class="landing-feature"><div class="feature-icon">◎</div><div><strong>Metas en UF, Millones o Contratos</strong><small>Elige la unidad al crear una meta y el sistema la calcula en las otras dos.</small></div></div>
+    <div class="landing-feature"><div class="feature-icon">↗</div><div><strong>Informes WhatsApp y correo</strong><small>Genera resúmenes con los 3 formatos listos para enviar al equipo o gerencia.</small></div></div>
+  </div>
+</div>
+
 <header class="top" id="dashboardTop"><div class="top-row">
-  <div class="brand"><div class="mark">N</div><div><h1>NEXUS</h1><span>Parque del Sendero · 3 Formatos Interconectados (UF · Contratos · Millones)</span></div></div>
+  <div class="brand"><div class="mark">N</div><div><h1>NEXUS</h1><span>3 en 1: UF · Dinero ($M) · Contratos</span></div></div>
   <button class="btn no-print" id="btnSettings">⚙️ Umbrales</button>
   <button class="btn no-print" id="btnVendor">+ Asesor</button>
   <button class="btn no-print" id="btnMeta">🎯 Metas</button>
   <button class="btn primary no-print" id="btnRecord">+ Registro diario</button>
   <button class="btn no-print" id="btnRecList">📋 Registros</button>
-  <button class="btn no-print" id="btnImport">⇪ Importar CSV</button>
   <button class="btn no-print" id="btnExport">⇩ Exportar CSV</button>
   <button class="btn no-print" id="btnReport">📤 Informe</button>
   <button class="btn no-print" id="btnSheet">🔗 Google Sheet</button>
@@ -162,16 +297,17 @@ html .kpi .val{font-size:24px;font-variant-numeric:tabular-nums}
 </div></header>
 
 <div class="wrap">
-  <div class="mode-bar no-print" role="tablist" aria-label="Formato de medición principal">
-    <div class="mode-tabs">
-      <button type="button" class="mode-tab active" data-mode="uf" id="tabUf">📐 UF</button>
-      <button type="button" class="mode-tab" data-mode="contracts" id="tabContracts">📄 Contratos (Cantidades)</button>
-      <button type="button" class="mode-tab" data-mode="millions" id="tabMillions">💵 Millones ($ CLP)</button>
+  <!-- Barra principal de 3 modos: UF · DINERO · CONTRATOS -->
+  <div class="app-switcher-bar no-print">
+    <div class="mode-tabs" id="metricModeTabs" role="tablist" aria-label="Modo de visualización de la app">
+      <button type="button" class="mode-tab active" data-mode="uf">📐 UF</button>
+      <button type="button" class="mode-tab" data-mode="money">💵 Dinero ($M)</button>
+      <button type="button" class="mode-tab" data-mode="contracts">📄 Contratos</button>
     </div>
-    <div class="mode-params">
-      <label>Valor UF ($): <input type="number" id="cfgUfValue" step="1" min="1000"></label>
-      <label title="Ticket promedio en UF por contrato para estimar metas o avances en unidades">Ticket ref. (UF/ctto): <input type="number" id="cfgAvgTicketUf" step="1" min="1"></label>
-      <span id="modeActiveHint">Vista activa: <b>UF</b></span>
+    <div class="fx-controls">
+      <label>Valor UF ($ CLP): <input type="number" id="cfgUfValue" step="1" min="1000"></label>
+      <label>Ticket ref. (UF/ctto): <input type="number" id="cfgTicketUf" step="1" min="1"></label>
+      <span id="modeActiveBadge" class="status-pill green">Modo activo: UF</span>
     </div>
   </div>
 
@@ -183,11 +319,6 @@ html .kpi .val{font-size:24px;font-variant-numeric:tabular-nums}
     <button class="btn ghost" id="btnClearF">Limpiar filtros</button>
   </div>
 
-  <div id="printHeader" class="only-print">
-    <h2 id="phTitle">Informe Comercial</h2>
-    <div class="meta" id="phMeta"></div>
-  </div>
-
   <div id="alertBanner"></div>
 
   <div class="kpi-tabs no-print" id="kpiTabs">
@@ -197,27 +328,23 @@ html .kpi .val{font-size:24px;font-variant-numeric:tabular-nums}
   </div>
   <div class="kpis" id="kpis"></div>
 
-  <div class="card" style="margin-bottom:14px">
-    <h3>👤 Meta y Avance por Asesor en 3 Formatos (UF · Contratos · Millones)</h3>
-    <p class="help">Cada asesor muestra su cumplimiento en UF, en cantidad de contratos y en millones de pesos según los parámetros configurados.</p>
-    <div class="vendor-3x-grid" id="vendor3xGrid"></div>
-  </div>
-
   <div class="table-card no-print" style="margin-bottom:14px;padding:16px">
-    <h3>🎯 Producción Diaria Necesaria por Asesor (sin estresar)</h3>
-    <p class="help">Meta ÷ días hábiles del mes en el formato seleccionado (UF, contratos o millones).</p>
+    <h3 id="dailyTitle">🎯 Producción Diaria Necesaria por Asesor</h3>
+    <p class="help">Meta ÷ días hábiles del mes replicado en el modo activo (UF, Dinero $M o Contratos).</p>
     <div class="tbl-scroll" style="margin-top:10px">
       <table id="tblDaily"><thead><tr><th>Asesor</th><th>Período</th><th>Meta</th><th>Días hábiles</th><th>Producción diaria necesaria</th></tr></thead>
         <tbody id="tblDailyBody"></tbody></table>
     </div>
   </div>
 
-  <div class="card" style="margin-bottom:14px"><h3>📈 Tendencia Mensual (últimos 6 meses)</h3><canvas id="chartTrend"></canvas>
+  <div class="card" style="margin-bottom:14px">
+    <h3 id="trendTitle">📈 Tendencia Mensual (últimos 6 meses)</h3>
+    <canvas id="chartTrend"></canvas>
     <p class="help" id="trendNote" style="margin-top:8px"></p>
   </div>
 
   <div class="charts">
-    <div class="card"><h3>Cursado Neto vs Meta por asesor</h3><canvas id="chartBar"></canvas></div>
+    <div class="card"><h3 id="barTitle">Cursado Neto vs Meta por asesor</h3><canvas id="chartBar"></canvas></div>
     <div class="card"><h3>Distribución por estado</h3><canvas id="chartPie"></canvas>
       <div class="legend-row">
         <span><i class="dot" style="background:var(--excellent)"></i>Excelente</span>
@@ -230,19 +357,19 @@ html .kpi .val{font-size:24px;font-variant-numeric:tabular-nums}
 
   <div class="card" style="margin-bottom:20px">
     <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px">
-      <h3>📊 Detalle de Ventas vs Caídas / Rechazos por Tramo UF y Asesor</h3>
+      <h3 id="mixTitle">📊 Detalle de Ventas vs Caídas / Rechazos por Tramo UF y Asesor</h3>
       <span class="help" style="margin:0">Unidades por plan: 80 UF · 130 UF · 200 UF · Otros</span>
     </div>
     <canvas id="chartUfMix" style="max-height:310px"></canvas>
   </div>
 
   <div class="table-card">
-    <div class="table-head"><h3>Detalle por asesor y mes</h3><span class="help" id="tblCount"></span></div>
+    <div class="table-head"><h3 id="detailTitle">Detalle por asesor y mes</h3><span class="help" id="tblCount"></span></div>
     <div class="tbl-scroll">
       <table id="tbl">
         <thead><tr>
           <th>Asesor</th><th>Parque / Zona</th><th>Período</th><th>Estado</th><th>Meta</th><th>Ingresado</th><th>Caídas / Anul.</th><th>Cursado Neto</th>
-          <th>% Cumpl. Real</th><th>Forecast (auto)</th><th>% Cumpl. Proy.</th><th>Cursado / Aprob.</th><th>Pend. Curse / Rech.</th>
+          <th>% Cumpl. Real</th><th>Forecast</th><th>% Cumpl. Proy.</th><th>Cursado / Aprob.</th><th>Pend. Curse / Rech.</th>
           <th>Entrevistas</th><th>Contratos Ing.</th><th>% Cierre</th><th>Referidos/Nuevos</th><th class="no-print">Acciones</th>
         </tr></thead>
         <tbody id="tblBody"></tbody>
@@ -271,7 +398,7 @@ html .kpi .val{font-size:24px;font-variant-numeric:tabular-nums}
 <div class="modal-bg" id="mVendor"><div class="modal">
   <h2>Asesor Comercial</h2>
   <input type="hidden" id="vId">
-  <div class="field"><label>Nombre</label><input id="vName" placeholder="Ej: Juan Pérez"></div>
+  <div class="field"><label>Nombre</label><input id="vName" placeholder="Ej: Marcelo Pérez Fuentes"></div>
   <div class="field"><label>Parque / Sector</label><input id="vZone" placeholder="Ej: Sendero San Bernardo"></div>
   <div class="modal-actions">
     <button class="btn ghost" id="vDel" style="margin-right:auto;color:var(--red)">Eliminar</button>
@@ -281,8 +408,8 @@ html .kpi .val{font-size:24px;font-variant-numeric:tabular-nums}
 </div></div>
 
 <div class="modal-bg" id="mRecord"><div class="modal" style="max-width:680px">
-  <h2>Registro diario</h2>
-  <div class="sub">Ingresa la gestión del día y el desglose de contratos vendidos y caídas/rechazos por tramo UF.</div>
+  <h2>Registro diario (actualiza UF · Dinero · Contratos)</h2>
+  <div class="sub">Ingresa la gestión del día; los tramos UF y contratos se sincronizan en las 3 vistas.</div>
   <input type="hidden" id="rId">
   <div class="grid2">
     <div class="field"><label>Asesor Comercial</label><select id="rVendor"></select></div>
@@ -325,13 +452,24 @@ html .kpi .val{font-size:24px;font-variant-numeric:tabular-nums}
 </div></div>
 
 <div class="modal-bg" id="mMeta"><div class="modal">
-  <h2>Meta mensual</h2>
+  <h2>Meta mensual (UF · Dinero $M · Contratos)</h2>
+  <div class="sub">Ingresa tu meta en la unidad que prefieras; se convierte automáticamente a UF base.</div>
   <input type="hidden" id="mId">
   <div class="grid2">
     <div class="field"><label>Asesor Comercial</label><select id="mVendorSel"></select></div>
     <div class="field"><label>Período (mes)</label><input type="month" id="mPeriod"></div>
   </div>
-  <div class="field"><label>Meta mensual de contratos (UF)</label><input type="number" id="mMetaVenta" step="0.01"></div>
+  <div class="grid2">
+    <div class="field"><label>Ingresar meta en:</label>
+      <select id="mUnitMode">
+        <option value="uf">UF</option>
+        <option value="money">Dinero ($ Millones CLP)</option>
+        <option value="contracts">Cantidad de Contratos</option>
+      </select>
+    </div>
+    <div class="field"><label id="mMetaInputLabel">Valor de la meta (UF)</label><input type="number" id="mMetaVenta" step="0.01"></div>
+  </div>
+  <div class="help" id="mMetaPreview" style="margin-bottom:8px">Equivalencia: —</div>
   <button class="btn ghost" id="mAuto" type="button" style="margin-bottom:10px">↻ Autocompletar días hábiles</button>
   <div class="grid2">
     <div class="field"><label>Días hábiles del mes</label><input type="number" id="mDiasTotales"></div>
@@ -366,29 +504,26 @@ html .kpi .val{font-size:24px;font-variant-numeric:tabular-nums}
   <div class="modal-actions"><button class="btn ghost" data-close>Cancelar</button><button class="btn primary" id="sSave">Guardar</button></div>
 </div></div>
 
-<div class="modal-bg" id="mImport"><div class="modal">
-  <h2>Importar CSV</h2>
-  <div class="field"><label>Tipo de archivo</label>
-    <select id="impType"><option value="daily">Registros diarios</option><option value="metas">Metas mensuales</option></select>
-  </div>
-  <input type="file" id="fileCsv" accept=".csv">
-  <div class="modal-actions"><button class="btn ghost" data-close>Cerrar</button></div>
+<div class="modal-bg" id="mCriticalHistory"><div class="modal">
+  <div class="modal-head"><h2>Historial de caídas a Crítico</h2><button class="btn ghost" type="button" data-close>Cerrar ✕</button></div>
+  <div class="list" id="criticalHistoryList" style="max-height:55vh;margin-top:0"></div>
+  <div class="modal-actions"><button class="btn ghost" data-close>Listo</button></div>
 </div></div>
 
-<div class="modal-bg" id="mReport"><div class="modal" style="max-width:420px">
-  <h2>Generar informe</h2>
+<div class="modal-bg" id="mReport"><div class="modal" style="max-width:440px">
+  <h2>Generar informe (UF · Dinero · Contratos)</h2>
   <div class="field"><label>Alcance</label>
-    <select id="repScope"><option value="group">Grupal (según filtros actuales)</option><option value="individual">Individual por vendedor</option></select>
+    <select id="repScope"><option value="group">Grupal (según filtros actuales)</option><option value="individual">Individual por asesor</option></select>
   </div>
-  <div class="field" id="repVendorWrap" style="display:none"><label>Vendedor</label><select id="repVendor"></select></div>
+  <div class="field" id="repVendorWrap" style="display:none"><label>Asesor</label><select id="repVendor"></select></div>
   <div class="modal-actions"><button class="btn ghost" data-close>Cancelar</button><button class="btn primary" id="repGo">Generar informe</button></div>
 </div></div>
 
 <div class="modal-bg" id="mPreview"><div class="modal" style="max-width:860px">
   <h2>Informe listo</h2>
   <img id="pvImg" alt="Informe" style="width:100%;border:1px solid var(--border);border-radius:8px;display:none">
-  <div class="field" style="margin-top:12px"><label>Mensaje para WhatsApp / correo</label><textarea id="pvText" rows="10"></textarea></div>
-  <div class="modal-actions" style="flex-wrap:wrap;justify-content:flex-start">
+  <div class="field" style="margin-top:12px"><label>Mensaje para WhatsApp / correo (incluye UF, Dinero $M y Contratos)</label><textarea id="pvText" rows="12"></textarea></div>
+  <div class="modal-actions" style="justify-content:flex-start">
     <button class="btn primary" id="pvJpg">💾 Guardar JPG</button>
     <button class="btn primary" id="pvPdf">📄 Guardar PDF</button>
     <a class="btn" id="pvWA" target="_blank" rel="noopener">📲 WhatsApp</a>
@@ -404,14 +539,30 @@ html .kpi .val{font-size:24px;font-variant-numeric:tabular-nums}
   <div class="modal-actions"><button class="btn ghost" data-close>Cerrar</button></div>
 </div></div>
 
+<section id="nexusDiag" aria-labelledby="nexusDiagTitle">
+  <h2 id="nexusDiagTitle">🧭 Diagnóstico Inteligente · UF · Dinero ($M) · Contratos</h2>
+  <div class="diag-sub">Estado de asesores replicado según el modo activo en el panel principal.</div>
+  <div class="diag-grid">
+    <div class="diag-stat"><span>🔴 Requieren intervención</span><b id="ndiRed">—</b><small>Estado crítico</small></div>
+    <div class="diag-stat"><span>🟡 En seguimiento</span><b id="ndiYellow">—</b><small>Brecha por corregir</small></div>
+    <div class="diag-stat"><span>🟢 Buen desempeño</span><b id="ndiGreen">—</b><small>Incluye estado Excelente</small></div>
+  </div>
+  <div id="ndiStatus" class="diag-status">Sincronizado con el tab principal.</div>
+  <div id="ndiRows" class="diag-list"><div class="diag-row">Cargando diagnóstico…</div></div>
+</section>
+
 <script>
 const LS = {
   v:'ps_advisors', r:'ps_records', m:'ps_metas', s:'ps_settings', t:'sd2_theme',
-  url:'ps_sheeturl', dias:'ps_diashabiles', mode:'nx_metric_mode', ufVal:'nx_uf_clp', ticketUf:'nx_avg_ticket_uf'
+  url:'ps_sheeturl', dias:'ps_diashabiles', ufClp:'nx_uf_clp', ticketUf:'nx_avg_ticket_uf', mode:'nx_metric_mode'
 };
+const LS_Q = 'ps_retryqueue';
+const LS_ALERTS = 'ps_lastknownstatus';
+const LS_HISTORY = 'ps_criticalhistory';
+
 function load(k,d){ try{ const x=localStorage.getItem(k); return x?JSON.parse(x):d; }catch(e){ return d; } }
 function save(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); return true; }catch(e){ return false; } }
-const TZ_PANEL='America/Santiago';
+const TZ_PANEL = 'America/Santiago';
 function nowTz(){ return new Date(new Date().toLocaleString('en-US',{timeZone:TZ_PANEL})); }
 function localISODate(d){ d=d||nowTz(); const x=new Date(d); return x.getFullYear()+'-'+String(x.getMonth()+1).padStart(2,'0')+'-'+String(x.getDate()).padStart(2,'0'); }
 function localPeriod(d){ return localISODate(d||nowTz()).slice(0,7); }
@@ -427,16 +578,70 @@ function parseCLNumber(v){
   const n=Number(s); return Number.isFinite(n)?n:0;
 }
 const uid = () => 'id'+Math.random().toString(36).slice(2,9);
-const $=id=>document.getElementById(id);
+const $ = id => document.getElementById(id);
 function esc(s){ return (s==null?'':String(s)).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 function notify(msg){ const t=$('toast'); t.textContent=msg; t.style.display='block'; clearTimeout(notify._t); notify._t=setTimeout(()=>t.style.display='none',3500); }
 
 let sheetUrl = load(LS.url, '');
 let sheetToken = load('ps_sheettoken', '');
 let diasHabilesPorPeriodo = load(LS.dias, {});
-let metricMode = load(LS.mode, 'uf');
-let ufValueClp = Number(load(LS.ufVal, 38000)) || 38000;
-let avgTicketUf = Number(load(LS.ticketUf, 130)) || 130;
+let ufValueClp = Math.max(1000, parseCLNumber(load(LS.ufClp, 38000)) || 38000);
+let avgTicketUf = Math.max(1, parseCLNumber(load(LS.ticketUf, 130)) || 130);
+let activeMode = ['uf','money','contracts'].includes(load(LS.mode,'uf')) ? load(LS.mode,'uf') : 'uf';
+
+$('cfgUfValue').value = ufValueClp;
+$('cfgTicketUf').value = avgTicketUf;
+
+function ufToMillions(uf){ return ((Number(uf)||0) * ufValueClp) / 1000000; }
+function ufToEstContracts(uf){ return avgTicketUf > 0 ? ((Number(uf)||0) / avgTicketUf) : 0; }
+
+function fmtUf(n){ return new Intl.NumberFormat('es-CL',{minimumFractionDigits:0,maximumFractionDigits:2}).format(Number(n)||0) + ' UF'; }
+function fmtMoneyM(uf){ return '$' + new Intl.NumberFormat('es-CL',{minimumFractionDigits:1,maximumFractionDigits:2}).format(ufToMillions(uf)) + 'M'; }
+function fmtContracts(uf, exactCount){
+  const est = ufToEstContracts(uf);
+  if(typeof exactCount === 'number' && exactCount > 0){
+    const c = Math.round(exactCount);
+    return `${c} cttos (${est.toFixed(1)} eq.)`;
+  }
+  return est.toFixed(1) + ' cttos';
+}
+
+/* Formateador principal que replica toda la app en UF, Dinero ($M) o Contratos */
+function fmtByMode(uf, exactCount){
+  if(activeMode === 'money') return fmtMoneyM(uf);
+  if(activeMode === 'contracts') return fmtContracts(uf, exactCount);
+  return fmtUf(uf);
+}
+function fmtAllThree(uf, exactCount){
+  return `${fmtUf(uf)} · ${fmtMoneyM(uf)} · ${fmtContracts(uf, exactCount)}`;
+}
+
+function setMetricMode(mode){
+  if(!['uf','money','contracts'].includes(mode)) return;
+  activeMode = mode;
+  save(LS.mode, mode);
+  document.querySelectorAll('#metricModeTabs .mode-tab').forEach(b=>b.classList.toggle('active', b.dataset.mode===mode));
+  const labelMap = { uf:'UF', money:'Dinero ($M)', contracts:'Contratos' };
+  $('modeActiveBadge').textContent = 'Modo activo: ' + labelMap[mode];
+  $('dailyTitle').textContent = `🎯 Producción Diaria Necesaria por Asesor (${labelMap[mode]})`;
+  $('trendTitle').textContent = `📈 Tendencia Mensual — ${labelMap[mode]} (últimos 6 meses)`;
+  $('barTitle').textContent = `Cursado Neto vs Meta por asesor (${labelMap[mode]})`;
+  $('detailTitle').textContent = `Detalle por asesor y mes (${labelMap[mode]})`;
+  render();
+}
+
+document.querySelectorAll('#metricModeTabs .mode-tab').forEach(b=>{
+  b.addEventListener('click', ()=>setMetricMode(b.dataset.mode));
+});
+
+$('cfgUfValue').addEventListener('change', ()=>{
+  ufValueClp = Math.max(1000, parseCLNumber($('cfgUfValue').value)||38000);
+  $('cfgUfValue').value = ufValueClp; save(LS.ufClp, ufValueClp); render();
+});
+$('cfgTicketUf').addEventListener('change', ()=>{
+  avgTicketUf = Math.max(1, parseCLNumber($('cfgTicketUf').value)||130);
+  $('cfgTicketUf').value = avgTicketUf; save(LS.ticketUf, avgTicketUf); render();
+});
 
 let vendors = load(LS.v, [
   {id:'v1', name:'Marcelo Pérez Fuentes', zone:'Sendero San Bernardo'},
@@ -450,73 +655,12 @@ let theme = load(LS.t, 'dark');
 if(theme) document.documentElement.setAttribute('data-theme', theme);
 $('btnTheme').textContent = (document.documentElement.getAttribute('data-theme')==='dark')?'☀️':'🌙';
 
-$('cfgUfValue').value = ufValueClp;
-$('cfgAvgTicketUf').value = avgTicketUf;
-
-function ufToMillions(uf){ return ((Number(uf)||0) * ufValueClp) / 1000000; }
-function ufToContracts(uf){ return avgTicketUf > 0 ? ((Number(uf)||0) / avgTicketUf) : 0; }
-function convertFromUf(uf, mode){
-  const m = mode || metricMode;
-  if(m === 'millions') return ufToMillions(uf);
-  if(m === 'contracts') return ufToContracts(uf);
-  return Number(uf)||0;
-}
-function fmtByMode(uf, mode, isCount){
-  const m = mode || metricMode;
-  if(isCount) return new Intl.NumberFormat('es-CL',{maximumFractionDigits:0}).format(Math.round(Number(uf)||0)) + ' cttos';
-  if(m === 'millions'){
-    return '$' + new Intl.NumberFormat('es-CL',{minimumFractionDigits:1,maximumFractionDigits:2}).format(ufToMillions(uf)) + 'M';
-  }
-  if(m === 'contracts'){
-    return new Intl.NumberFormat('es-CL',{minimumFractionDigits:1,maximumFractionDigits:1}).format(ufToContracts(uf)) + ' cttos';
-  }
-  return new Intl.NumberFormat('es-CL',{minimumFractionDigits:0,maximumFractionDigits:2}).format(Number(uf)||0) + ' UF';
-}
-function fmtAllThreeFormats(uf, fallbackContracts){
-  const ufStr = fmtByMode(uf, 'uf');
-  const cttoStr = typeof fallbackContracts === 'number'
-    ? fmtByMode(fallbackContracts, 'uf', true) + ' (eq. ' + fmtByMode(uf, 'contracts') + ')'
-    : fmtByMode(uf, 'contracts');
-  const millStr = fmtByMode(uf, 'millions');
-  return `${ufStr} | ${cttoStr} | ${millStr}`;
-}
-const fmtP = n => (isFinite(n)?n.toFixed(1):'0.0')+'%';
-
-function syncModeUi(){
-  document.querySelectorAll('.mode-tab').forEach(b=>b.classList.toggle('active', b.dataset.mode===metricMode));
-  const labelMap = { uf:'UF', contracts:'Contratos (Cantidades)', millions:'Millones ($ CLP)' };
-  $('modeActiveHint').innerHTML = `Vista activa: <b>${labelMap[metricMode]||'UF'}</b>`;
-}
-document.querySelectorAll('.mode-tab').forEach(b=>{
-  b.onclick=()=>{ metricMode=b.dataset.mode; save(LS.mode, metricMode); syncModeUi(); render(); };
-});
-$('cfgUfValue').addEventListener('change', ()=>{
-  ufValueClp = Math.max(1000, parseCLNumber($('cfgUfValue').value)||38000);
-  $('cfgUfValue').value = ufValueClp;
-  save(LS.ufVal, ufValueClp);
-  render();
-});
-$('cfgAvgTicketUf').addEventListener('change', ()=>{
-  avgTicketUf = Math.max(1, parseCLNumber($('cfgAvgTicketUf').value)||130);
-  $('cfgAvgTicketUf').value = avgTicketUf;
-  save(LS.ticketUf, avgTicketUf);
-  render();
-});
-syncModeUi();
-
 function isWeekday(d){ const day=d.getDay(); return day!==0 && day!==6; }
-function businessDaysInRange(start,end){
-  let c=0; let d=new Date(start.getFullYear(),start.getMonth(),start.getDate(),12);
-  const last=new Date(end.getFullYear(),end.getMonth(),end.getDate(),12);
-  while(d<=last){ if(isWeekday(d)) c++; d.setDate(d.getDate()+1); }
-  return c;
-}
+function businessDaysInRange(start,end){ let c=0; let d=new Date(start.getFullYear(),start.getMonth(),start.getDate(),12); const last=new Date(end.getFullYear(),end.getMonth(),end.getDate(),12); while(d<=last){ if(isWeekday(d)) c++; d.setDate(d.getDate()+1);} return c; }
 function periodBounds(period){ const [y,m]=period.split('-').map(Number); return {start:new Date(y,m-1,1), end:new Date(y,m,0)}; }
 function autoBusinessDays(period){ if(!period) return 0; const {start,end}=periodBounds(period); return businessDaysInRange(start,end); }
-function autoElapsedDays(period){
-  if(!period) return 0; const {start,end}=periodBounds(period); const today=nowTz(); today.setHours(0,0,0,0);
-  if(today<start) return 0; const cap = today<end? today: end; return businessDaysInRange(start,cap);
-}
+function autoElapsedDays(period){ if(!period) return 0; const {start,end}=periodBounds(period); const today=nowTz(); today.setHours(0,0,0,0);
+  if(today<start) return 0; const cap = today<end? today: end; return businessDaysInRange(start,cap); }
 
 function statusOf(cumplReal, nuevos, avanceEsperado=100){
   if (avanceEsperado <= 0) return {level:'upcoming', label:'Por iniciar', desc:'El período aún no comienza.', icon:'⚪'};
@@ -533,21 +677,17 @@ function normalize(s){ return (s||'').toString().toLowerCase().normalize('NFD').
 function findVendor(name){ return vendors.find(x=>normalize(x.name)===normalize(name)); }
 function vendorSlugId(name){ return 'v_'+normalize(name); }
 function upsertVendorByName(name, zone){
-  const cleanName = (name||'').trim(); if(!cleanName) return null;
-  let v = findVendor(cleanName);
+  const cleanName=(name||'').trim(); if(!cleanName) return null;
+  let v=findVendor(cleanName);
   if(!v){ v={id:vendorSlugId(cleanName), name:cleanName, zone:zone||''}; vendors.push(v); }
-  else if(zone) v.zone = zone;
+  else if(zone) v.zone=zone;
   return v;
 }
 
-function setSyncStatus(msg){ $('syncStatus').textContent = msg; }
-const LS_Q='ps_retryqueue';
 function queueGet(){ return load(LS_Q, []); }
-function updateQueueBadge(){
-  const n=queueGet().length;
-  $('queueBadge').textContent = n>0 ? ('⏳ '+n+' cambio(s) pendiente(s)') : '';
-}
+function updateQueueBadge(){ const n=queueGet().length; $('queueBadge').textContent = n>0 ? ('⏳ '+n+' cambio(s) pendiente(s)') : ''; }
 function queueSave(q){ save(LS_Q, q); updateQueueBadge(); }
+function setSyncStatus(msg){ $('syncStatus').textContent = msg; }
 
 async function postToSheet(body){
   const res = await fetch(sheetUrl, { method:'POST', headers:{'Content-Type':'text/plain;charset=utf-8'}, body: JSON.stringify({...body, token:sheetToken}) });
@@ -556,9 +696,15 @@ async function postToSheet(body){
   if(!j || j.ok!==true) throw new Error((j&&j.error)||'Error en Sheet');
   return j;
 }
+function markPosted_(body,result){
+  if(body && body.action==='record' && result && result.recordId){
+    const rec=dailyRecords.find(x=>x.id===body.recordId || x.sheetRecordId===result.recordId);
+    if(rec){ rec.sheetRecordId=result.recordId; rec.source='sheet'; save(LS.r,dailyRecords); }
+  }
+}
 async function sendToSheet(body){
   if(!sheetUrl) return;
-  try{ await postToSheet(body); }
+  try{ const result=await postToSheet(body); markPosted_(body,result); }
   catch(e){ const q=queueGet(); q.push({body, tries:0, ts:Date.now()}); queueSave(q); }
 }
 async function retryQueue(){
@@ -566,7 +712,7 @@ async function retryQueue(){
   const q=queueGet(); if(!q.length) return;
   const rem=[];
   for(const item of q){
-    try{ await postToSheet(item.body); }
+    try{ const result=await postToSheet(item.body); markPosted_(item.body,result); }
     catch(e){ item.tries=(item.tries||0)+1; rem.push(item); }
   }
   queueSave(rem);
@@ -581,17 +727,15 @@ async function syncFromSheet(showToast){
     if(!res.ok) throw new Error('HTTP '+res.status);
     const data = await res.json();
     if(!data || data.ok!==true || !Array.isArray(data.records)) throw new Error('Respuesta inválida');
-    if(Array.isArray(data.advisors)){
-      data.advisors.forEach(a=>{ if(a && a.name) upsertVendorByName(a.name, a.zone); });
-    }
+    if(Array.isArray(data.advisors)) data.advisors.forEach(a=>{ if(a && a.name) upsertVendorByName(a.name, a.zone); });
     const seenSheetIds = new Set();
     (data.records||[]).forEach(r=>{
       if(!r.vendedor || !validISODate(r.fecha)) return;
-      const v = upsertVendorByName(r.vendedor, r.zona); if(!v) return;
-      const remoteId = String(r.recordId||'').trim();
-      const id = remoteId ? 'sheet_'+remoteId : ('legacy_'+normalize(r.vendedor)+'_'+r.fecha);
+      const v=upsertVendorByName(r.vendedor, r.zona); if(!v) return;
+      const remoteId=String(r.recordId||'').trim();
+      const id=remoteId?'sheet_'+remoteId:('legacy_'+normalize(r.vendedor)+'_'+r.fecha);
       seenSheetIds.add(id);
-      const rec = {
+      const rec={
         id, sheetRecordId:remoteId||'', source:'sheet', vendorId:v.id, date:r.fecha,
         clientesVisitados:parseCLNumber(r.visitados), ventaTotalSinIva:parseCLNumber(r.ventaTotal),
         clientesNuevos:parseCLNumber(r.clientesNuevos), clientesConCompra:parseCLNumber(r.clientesCompra),
@@ -599,15 +743,15 @@ async function syncFromSheet(showToast){
         devoluciones:parseCLNumber(r.devolucion), observaciones:String(r.observaciones||''),
         ufMix:extractUfMixFromObs(r.observaciones||'').mix
       };
-      const idx = dailyRecords.findIndex(x=>x.id===id || (remoteId && x.sheetRecordId===remoteId));
+      const idx=dailyRecords.findIndex(x=>x.id===id || (remoteId && x.sheetRecordId===remoteId));
       if(idx>=0) dailyRecords[idx]={...dailyRecords[idx],...rec}; else dailyRecords.push(rec);
     });
     dailyRecords = dailyRecords.filter(r=>r.source!=='sheet' || seenSheetIds.has(r.id));
     (data.metas||[]).forEach(m=>{
       if(!m.vendedor || !validPeriod(m.periodo)) return;
-      const v = upsertVendorByName(m.vendedor, ''); if(!v) return;
-      const id = 'm_'+v.id+'_'+m.periodo;
-      const ex = metas.find(x=>x.id===id || (x.vendorId===v.id && x.period===m.periodo));
+      const v=upsertVendorByName(m.vendedor, ''); if(!v) return;
+      const id='m_'+v.id+'_'+m.periodo;
+      const ex=metas.find(x=>x.id===id || (x.vendorId===v.id && x.period===m.periodo));
       if(ex){ ex.metaVenta=parseCLNumber(m.metaVenta); ex.source='sheet'; }
       else metas.push({id,vendorId:v.id,period:m.periodo,metaVenta:parseCLNumber(m.metaVenta),diasTotales:autoBusinessDays(m.periodo),diasTranscurridos:0,manual:false,source:'sheet'});
     });
@@ -654,16 +798,16 @@ function aggregateRows(){
   return Object.values(map).map(row=>{
     const v=vendors.find(x=>x.id===row.vendorId);
     const m=metas.find(x=>x.vendorId===row.vendorId && x.period===row.period);
-    const total = diasHabilesPorPeriodo[row.period] || (m ? (m.diasTotales||autoBusinessDays(row.period)) : autoBusinessDays(row.period));
-    const elapsed = (m && m.manual) ? m.diasTranscurridos : autoElapsedDays(row.period);
-    const metaVenta = m ? m.metaVenta : 0;
-    const ventaNeta = Math.max(row.factura - row.devol, 0);
-    const cumplReal = metaVenta>0 ? ventaNeta/metaVenta*100 : 0;
-    const forecast = elapsed>0 ? (ventaNeta/elapsed)*total : 0;
-    const cumplProy = metaVenta>0 ? forecast/metaVenta*100 : 0;
-    const efect = row.visit>0 ? row.compra/row.visit*100 : 0;
-    const inf = dailyRecords.some(r=>r.vendorId===row.vendorId && (r.date||'').slice(0,7)===row.period && r.facturadoInformado!==false);
-    const ventaDiariaNecesaria = (metaVenta>0 && total>0) ? metaVenta/total : 0;
+    const total=diasHabilesPorPeriodo[row.period]||(m?(m.diasTotales||autoBusinessDays(row.period)):autoBusinessDays(row.period));
+    const elapsed=(m&&m.manual)?m.diasTranscurridos:autoElapsedDays(row.period);
+    const metaVenta=m?m.metaVenta:0;
+    const ventaNeta=Math.max(row.factura-row.devol,0);
+    const cumplReal=metaVenta>0?ventaNeta/metaVenta*100:0;
+    const forecast=elapsed>0?(ventaNeta/elapsed)*total:0;
+    const cumplProy=metaVenta>0?forecast/metaVenta*100:0;
+    const efect=row.visit>0?row.compra/row.visit*100:0;
+    const inf=dailyRecords.some(r=>r.vendorId===row.vendorId && (r.date||'').slice(0,7)===row.period && r.facturadoInformado!==false);
+    const ventaDiariaNecesaria=(metaVenta>0 && total>0)?metaVenta/total:0;
     return {
       vendorId:row.vendorId, vendorName:v?v.name:'—', zone:v?v.zone:'—', period:row.period,
       meta:metaVenta, venta:row.venta, devol:row.devol, ventaNeta,
@@ -676,7 +820,7 @@ function aggregateRows(){
 }
 
 let lastAggregated = [];
-const state = { stressTouched:false, warnedCharts:false };
+const state = { stressTouched:false, lastCritical:[] };
 function filteredRows(){
   const all = lastAggregated.length ? lastAggregated : aggregateRows();
   const q = normalize(($('fSearch')||{}).value||'');
@@ -691,14 +835,13 @@ function filteredRows(){
 }
 
 function extractUfMixFromObs(obs){
-  const str = String(obs||'');
-  const m = str.match(/\[UF_MIX:([^\]]+)\]/);
-  const cleanObs = str.replace(/\s*\[UF_MIX:[^\]]+\]/g, '').trim();
-  const base = {v80:0, v130:0, v200:0, vOtrosCnt:0, vOtrosUf:0, r80:0, r130:0, r200:0, rOtrosCnt:0, rOtrosUf:0};
+  const str=String(obs||''); const m=str.match(/\[UF_MIX:([^\]]+)\]/);
+  const cleanObs=str.replace(/\s*\[UF_MIX:[^\]]+\]/g,'').trim();
+  const base={v80:0,v130:0,v200:0,vOtrosCnt:0,vOtrosUf:0,r80:0,r130:0,r200:0,rOtrosCnt:0,rOtrosUf:0};
   if(m){
     m[1].split('|').forEach(part=>{
       part.split(',').forEach(kv=>{
-        const [k,val] = kv.split('='); const n = Number(val)||0;
+        const [k,val]=kv.split('='); const n=Number(val)||0;
         if(k==='V80') base.v80=n; else if(k==='V130') base.v130=n; else if(k==='V200') base.v200=n;
         else if(k==='VOC') base.vOtrosCnt=n; else if(k==='VOU') base.vOtrosUf=n;
         else if(k==='R80') base.r80=n; else if(k==='R130') base.r130=n; else if(k==='R200') base.r200=n;
@@ -706,36 +849,31 @@ function extractUfMixFromObs(obs){
       });
     });
   }
-  return {mix: base, cleanObs};
+  return {mix:base, cleanObs};
 }
 function encodeUfMixToObs(cleanObs, mix){
-  const m = mix || {};
-  const hasAny = (m.v80||0)+(m.v130||0)+(m.v200||0)+(m.vOtrosUf||0)+(m.r80||0)+(m.r130||0)+(m.r200||0)+(m.rOtrosUf||0) > 0;
-  const base = String(cleanObs||'').replace(/\s*\[UF_MIX:[^\]]+\]/g, '').trim();
+  const m=mix||{};
+  const hasAny=(m.v80||0)+(m.v130||0)+(m.v200||0)+(m.vOtrosUf||0)+(m.r80||0)+(m.r130||0)+(m.r200||0)+(m.rOtrosUf||0)>0;
+  const base=String(cleanObs||'').replace(/\s*\[UF_MIX:[^\]]+\]/g,'').trim();
   if(!hasAny) return base;
-  const tag = `[UF_MIX:V80=${m.v80||0},V130=${m.v130||0},V200=${m.v200||0},VOC=${m.vOtrosCnt||0},VOU=${m.vOtrosUf||0}|R80=${m.r80||0},R130=${m.r130||0},R200=${m.r200||0},ROC=${m.rOtrosCnt||0},ROU=${m.rOtrosUf||0}]`;
-  return base ? (base + ' ' + tag) : tag;
+  const tag=`[UF_MIX:V80=${m.v80||0},V130=${m.v130||0},V200=${m.v200||0},VOC=${m.vOtrosCnt||0},VOU=${m.vOtrosUf||0}|R80=${m.r80||0},R130=${m.r130||0},R200=${m.r200||0},ROC=${m.rOtrosCnt||0},ROU=${m.rOtrosUf||0}]`;
+  return base?(base+' '+tag):tag;
 }
-function recordUfMix(r){ return (r && r.ufMix) ? r.ufMix : extractUfMixFromObs(r ? r.observaciones : '').mix; }
+function recordUfMix(r){ return (r&&r.ufMix)?r.ufMix:extractUfMixFromObs(r?r.observaciones:'').mix; }
 
-let barChart, pieChart, trendChart, ufMixChart;
-let kpiGroups = {}, kpiTab = 'resumen';
+let barChart, pieChart, trendChart, ufMixChart, kpiGroups={}, kpiTab='resumen';
 function renderKpis(){
   $('kpis').innerHTML = kpiGroups[kpiTab] || '';
   document.querySelectorAll('#kpiTabs button').forEach(b=>b.classList.toggle('active', b.dataset.kt===kpiTab));
 }
 document.querySelectorAll('#kpiTabs button').forEach(b=>b.onclick=()=>{ kpiTab=b.dataset.kt; renderKpis(); });
-
 function kpi(lbl,val,sub){ return `<div class="kpi"><div class="lbl">${lbl}</div><div class="val">${val}</div>${sub?`<div class="sub">${sub}</div>`:''}</div>`; }
 function kpiBar(lbl,val,sub,pct){
   const p=Math.max(0,Math.min(pct,100));
-  const color = pct>=100?'var(--green)':(pct>=70?'var(--accent)':(pct>=40?'var(--yellow)':'var(--red)'));
-  return `<div class="kpi"><div class="lbl">${lbl}</div><div class="val">${val}</div>
-    <div class="progress"><div class="progress-fill" style="width:${p}%;background:${color}"></div></div>
-    ${sub?`<div class="sub">${sub}</div>`:''}</div>`;
+  const color=pct>=100?'var(--green)':(pct>=70?'var(--accent)':(pct>=40?'var(--yellow)':'var(--red)'));
+  return `<div class="kpi"><div class="lbl">${lbl}</div><div class="val">${val}</div><div class="progress"><div class="progress-fill" style="width:${p}%;background:${color}"></div></div>${sub?`<div class="sub">${sub}</div>`:''}</div>`;
 }
 function pillsHTML(c){ return `<span class="status-pill excellent">🟢 Exc. ${c.excellent}</span> <span class="status-pill green">🟢 Meta ${c.green}</span> <span class="status-pill yellow">🟡 ${c.yellow}</span> <span class="status-pill red">🚨 ${c.red}</span>`; }
-
 function totalsOf(rows){
   const t={meta:0,venta:0,devol:0,neta:0,forecast:0,quiebre:0,factura:0,visit:0,compra:0,nuevos:0};
   rows.forEach(r=>{ t.meta+=r.meta; t.venta+=r.venta; t.devol+=r.devol; t.neta+=r.ventaNeta; t.forecast+=r.forecast; t.quiebre+=r.quiebre; t.factura+=r.factura; t.visit+=r.visit; t.compra+=r.compra; t.nuevos+=r.nuevos; });
@@ -743,89 +881,71 @@ function totalsOf(rows){
   return t;
 }
 
-function renderVendor3xSummary(rows){
-  const byV = {};
+function checkCriticalAlerts(rows){
+  const known=load(LS_ALERTS,{}), history=load(LS_HISTORY,[]), nowCritical=[];
   rows.forEach(r=>{
-    const b = byV[r.vendorId] || (byV[r.vendorId] = {
-      vendorName:r.vendorName, zone:r.zone, period:r.period, metaUf:0, netaUf:0,
-      contractsIng:r.compra, cumplReal:r.cumplReal, status:r.status
-    });
-    b.metaUf += r.meta;
-    b.netaUf += r.ventaNeta;
-    b.contractsIng += r.compra;
-    b.cumplReal = b.metaUf > 0 ? (b.netaUf / b.metaUf * 100) : 0;
+    const key=r.vendorId+'|'+r.period, wasCritical=known[key]==='red';
+    if(r.status.level==='red' && !wasCritical){
+      nowCritical.push(r);
+      if(!history.some(h=>h.vendorId===r.vendorId && h.period===r.period)){
+        const entry={vendorId:r.vendorId,vendorName:r.vendorName,period:r.period,detectedAt:localISODate()};
+        history.push(entry); sendToSheet({action:'criticalHistoryUpsert',...entry});
+      }
+    }
+    known[key]=r.status.level;
   });
-  const list = Object.values(byV);
-  if(!list.length){ $('vendor3xGrid').innerHTML = '<div class="empty">Sin asesores en el filtro actual.</div>'; return; }
-  $('vendor3xGrid').innerHTML = list.map(v=>`
-    <div class="v3-card">
-      <div class="v3-head">
-        <div><strong>${esc(v.vendorName)}</strong><small>${esc(v.zone||'—')} · ${v.period||'—'}</small></div>
-        <span class="status-pill ${v.status.level}">${v.status.icon} ${v.status.label}</span>
-      </div>
-      <div class="v3-cols">
-        <div class="v3-box">
-          <div class="tag">UF</div>
-          <div class="main-num">${fmtByMode(v.netaUf,'uf')}</div>
-          <div class="sub-num">Meta: ${fmtByMode(v.metaUf,'uf')} (${fmtP(v.cumplReal)})</div>
-        </div>
-        <div class="v3-box">
-          <div class="tag">Contratos</div>
-          <div class="main-num">${fmtByMode(v.contractsIng,'uf',true)}</div>
-          <div class="sub-num">Eq. meta: ${fmtByMode(v.metaUf,'contracts')}</div>
-        </div>
-        <div class="v3-box">
-          <div class="tag">Millones</div>
-          <div class="main-num">${fmtByMode(v.netaUf,'millions')}</div>
-          <div class="sub-num">Meta: ${fmtByMode(v.metaUf,'millions')}</div>
-        </div>
-      </div>
-    </div>
-  `).join('');
+  save(LS_ALERTS,known); save(LS_HISTORY,history);
+  return nowCritical;
+}
+function renderAlertBanner(list){
+  const dismissed=load('ps_alertsdismissed',{}), visible=list.filter(r=>!dismissed[r.vendorId+'|'+r.period]);
+  $('alertBanner').innerHTML = visible.length ? `<div class="alert-banner"><h3>🚨 ${visible.length} asesor(es) en estado Crítico</h3>` +
+    visible.map(r=>`<div class="alert-item"><span>${esc(r.vendorName)} · ${r.period} · ${fmtByMode(r.ventaNeta, r.compra)} (${fmtP(r.cumplReal)})</span></div>`).join('') + '</div>' : '';
+}
+
+function chartVal(uf, exactCount){
+  if(activeMode === 'money') return Number(ufToMillions(uf).toFixed(2));
+  if(activeMode === 'contracts') return Number((typeof exactCount==='number' && exactCount>0 ? exactCount : ufToEstContracts(uf)).toFixed(1));
+  return Number((Number(uf)||0).toFixed(2));
 }
 
 function render(){
   const all=aggregateRows(); lastAggregated=all; populateSelects(all);
   const rows=filteredRows(); const t=totalsOf(rows);
-  const counts={excellent:0,green:0,yellow:0,red:0,upcoming:0};
-  rows.forEach(r=>{ counts[r.status.level]=(counts[r.status.level]||0)+1; });
-
+  const counts={excellent:0,green:0,yellow:0,red:0,upcoming:0}; rows.forEach(r=>{ counts[r.status.level]=(counts[r.status.level]||0)+1; });
   const estadoCard = `<div class="kpi"><div class="lbl">Estado del equipo</div><div class="val" style="font-size:13px;display:flex;flex-wrap:wrap;gap:4px">${pillsHTML(counts)}</div></div>`;
   kpiGroups = {
     resumen:
-      kpi('Meta', t.meta>0 ? fmtByMode(t.meta) : 'No configurada') +
-      kpi('Forecast Cierre', fmtByMode(t.forecast), t.meta>0 ? fmtP(t.cumplProy)+' de la meta' : 'Configura una meta') +
-      kpiBar('% Cumplimiento Real', t.meta>0 ? fmtP(t.cumplReal) : '—', 'Neto: '+fmtByMode(t.neta), t.meta>0 ? t.cumplReal : 0) +
-      kpi('% Cumplimiento Proyectado', t.meta>0 ? fmtP(t.cumplProy) : '—', t.meta>0 ? 'Proyección: '+fmtByMode(t.forecast) : '—') +
+      kpi('Meta', t.meta>0 ? fmtByMode(t.meta) : 'No configurada', t.meta>0 ? fmtAllThree(t.meta) : '') +
+      kpi('Forecast Cierre', fmtByMode(t.forecast), fmtAllThree(t.forecast)) +
+      kpiBar('% Cumplimiento Real', t.meta>0 ? fmtP(t.cumplReal) : '—', 'Neto: '+fmtByMode(t.neta, t.compra), t.meta>0?t.cumplReal:0) +
+      kpi('% Cumplimiento Proyectado', t.meta>0 ? fmtP(t.cumplProy) : '—', t.meta>0 ? 'Proy.: '+fmtByMode(t.forecast) : '—') +
       estadoCard,
     financiero:
-      kpi('Ingresado', fmtByMode(t.venta)) +
-      kpi('Cursado / Aprobado', fmtByMode(t.factura)) +
-      kpi('Pendiente / Rechazo', fmtByMode(t.quiebre)) +
-      kpi('Caídas / Anulaciones', fmtByMode(t.devol)) +
-      kpi('Cursado Neto', fmtByMode(t.neta)),
+      kpi('Ingresado', fmtByMode(t.venta, t.compra), fmtAllThree(t.venta, t.compra)) +
+      kpi('Cursado / Aprobado', fmtByMode(t.factura, t.compra), fmtAllThree(t.factura, t.compra)) +
+      kpi('Pendiente / Rechazo', fmtByMode(t.quiebre), fmtAllThree(t.quiebre)) +
+      kpi('Caídas / Anulaciones', fmtByMode(t.devol), fmtAllThree(t.devol)) +
+      kpi('Cursado Neto', fmtByMode(t.neta, t.compra), fmtAllThree(t.neta, t.compra)),
     clientes:
-      kpi('Entrevistas', t.visit) +
-      kpi('Contratos Ingresados', t.compra) +
-      kpi('% Tasa de Cierre', fmtP(t.efect)) +
-      kpi('Referidos / Nuevos', t.nuevos)
+      kpi('Entrevistas', t.visit) + kpi('Contratos Ingresados', t.compra) +
+      kpi('% Tasa de Cierre', fmtP(t.efect)) + kpi('Referidos / Nuevos', t.nuevos)
   };
   renderKpis();
-  renderVendor3xSummary(rows);
 
-  const by={}; rows.forEach(r=>{ const b=by[r.vendorName]||(by[r.vendorName]={meta:0,neta:0}); b.meta+=r.meta; b.neta+=r.ventaNeta; });
+  const by={}; rows.forEach(r=>{ const b=by[r.vendorName]||(by[r.vendorName]={meta:0,neta:0,compra:0}); b.meta+=r.meta; b.neta+=r.ventaNeta; b.compra+=r.compra; });
   const labels=Object.keys(by);
+  const unitTag = activeMode==='money' ? ' ($M)' : (activeMode==='contracts' ? ' (Cttos)' : ' (UF)');
   try{
-    if(barChart){barChart.destroy();barChart=null;}
-    if(pieChart){pieChart.destroy();pieChart=null;}
+    if(barChart){barChart.destroy();barChart=null;} if(pieChart){pieChart.destroy();pieChart=null;}
     if(typeof Chart!=='undefined'){
       barChart=new Chart($('chartBar'),{
         type:'bar',
         data:{
           labels,
           datasets:[
-            {label:'Meta',data:labels.map(l=>convertFromUf(by[l].meta)),backgroundColor:'#94A3C4'},
-            {label:'Cursado Neto',data:labels.map(l=>convertFromUf(by[l].neta)),backgroundColor:'#2F4CDD'}
+            {label:'Meta'+unitTag,data:labels.map(l=>chartVal(by[l].meta)),backgroundColor:'#94A3C4'},
+            {label:'Cursado Neto'+unitTag,data:labels.map(l=>chartVal(by[l].neta, by[l].compra)),backgroundColor:'#2F4CDD'}
           ]
         },
         options:{responsive:true,animation:false,plugins:{legend:{position:'bottom'}}}
@@ -844,142 +964,123 @@ function render(){
   }catch(e){ console.error(e); }
 
   const tb=$('tblBody'); $('tblCount').textContent=rows.length+' fila(s)';
-  if(!rows.length){
-    tb.innerHTML='<tr><td colspan="18"><div class="empty">Sin datos aún. Agrega un asesor, meta o registro diario.</div></td></tr>';
-  } else {
+  if(!rows.length){ tb.innerHTML='<tr><td colspan="18"><div class="empty">Sin datos aún. Agrega un asesor, meta o registro diario.</div></td></tr>'; }
+  else{
     tb.innerHTML=rows.sort((a,b)=>a.vendorName.localeCompare(b.vendorName)||b.period.localeCompare(a.period)).map(r=>`<tr>
       <td>${esc(r.vendorName)}</td><td>${esc(r.zone)||'—'}</td><td>${r.period||'—'}</td>
       <td><span class="status-pill ${r.status.level}">${r.status.icon} ${r.status.label}</span></td>
-      <td class="num">${r.meta>0?fmtByMode(r.meta):'—'}</td>
-      <td class="num">${fmtByMode(r.venta)}</td>
-      <td class="num">${fmtByMode(r.devol)}</td>
-      <td class="num">${fmtByMode(r.ventaNeta)}</td>
-      <td class="num">${r.meta>0?fmtP(r.cumplReal):'—'}</td>
-      <td class="num">${fmtByMode(r.forecast)}</td>
-      <td class="num">${r.meta>0?fmtP(r.cumplProy):'—'}</td>
-      <td class="num">${fmtByMode(r.factura)}</td>
-      <td class="num">${fmtByMode(r.quiebre)}</td>
-      <td class="num">${r.visit}</td>
-      <td class="num">${r.compra}</td>
-      <td class="num">${fmtP(r.efect)}</td>
-      <td class="num">${r.nuevos}</td>
+      <td class="num">${r.meta>0?fmtByMode(r.meta):'—'}</td><td class="num">${fmtByMode(r.venta, r.compra)}</td><td class="num">${fmtByMode(r.devol)}</td><td class="num">${fmtByMode(r.ventaNeta, r.compra)}</td>
+      <td class="num">${r.meta>0?fmtP(r.cumplReal):'—'}</td><td class="num">${fmtByMode(r.forecast)}</td><td class="num">${r.meta>0?fmtP(r.cumplProy):'—'}</td>
+      <td class="num">${r.facturadoInformado?fmtByMode(r.factura, r.compra):'—'}</td><td class="num">${fmtByMode(r.quiebre)}</td>
+      <td class="num">${r.visit}</td><td class="num">${r.compra}</td><td class="num">${fmtP(r.efect)}</td><td class="num">${r.nuevos}</td>
       <td class="no-print"><div class="row-actions"><button data-editv="${r.vendorId}">👤</button><button data-editm="${r.vendorId}|${r.period}">🎯</button></div></td>
     </tr>`).join('');
     tb.querySelectorAll('[data-editv]').forEach(b=>b.onclick=()=>openVendorEdit(b.dataset.editv));
     tb.querySelectorAll('[data-editm]').forEach(b=>b.onclick=()=>{ const [vid,p]=b.dataset.editm.split('|'); openMetaEdit(vid,p); });
   }
   renderDaily(rows);
+  const criticalNow=checkCriticalAlerts(all);
+  state.lastCritical = criticalNow.length ? criticalNow : (state.lastCritical||[]);
+  renderAlertBanner(state.lastCritical);
   renderStress();
+  try{window.dispatchEvent(new Event("nexus:rendered"));}catch(e){}
 }
 
 function aggregateUfMixByAdvisor(){
-  const fv=$('fVendor').value, fz=$('fZone').value, fp=$('fPeriod').value;
-  const q=normalize(($('fSearch')||{}).value||'');
+  const fv=$('fVendor').value, fz=$('fZone').value, fp=$('fPeriod').value, q=normalize(($('fSearch')||{}).value||'');
   const map={};
   vendors.forEach(v=>{
-    if(fv && v.id!==fv) return;
-    if(fz && v.zone!==fz) return;
-    if(q && !normalize(v.name).includes(q)) return;
-    map[v.id]={vendorName:v.name, v80:0, v130:0, v200:0, vOtros:0, r80:0, r130:0, r200:0, rOtros:0};
+    if(fv && v.id!==fv) return; if(fz && v.zone!==fz) return; if(q && !normalize(v.name).includes(q)) return;
+    map[v.id]={vendorName:v.name,v80:0,v130:0,v200:0,vOtros:0,r80:0,r130:0,r200:0,rOtros:0};
   });
   dailyRecords.forEach(r=>{
-    if(!map[r.vendorId]) return;
-    if(fp && (r.date||'').slice(0,7)!==fp) return;
-    const m = recordUfMix(r);
-    map[r.vendorId].v80 += m.v80||0; map[r.vendorId].v130 += m.v130||0; map[r.vendorId].v200 += m.v200||0; map[r.vendorId].vOtros += m.vOtrosCnt||0;
-    map[r.vendorId].r80 += m.r80||0; map[r.vendorId].r130 += m.r130||0; map[r.vendorId].r200 += m.r200||0; map[r.vendorId].rOtros += m.rOtrosCnt||0;
+    if(!map[r.vendorId]) return; if(fp && (r.date||'').slice(0,7)!==fp) return;
+    const m=recordUfMix(r);
+    map[r.vendorId].v80+=m.v80||0; map[r.vendorId].v130+=m.v130||0; map[r.vendorId].v200+=m.v200||0; map[r.vendorId].vOtros+=m.vOtrosCnt||0;
+    map[r.vendorId].r80+=m.r80||0; map[r.vendorId].r130+=m.r130||0; map[r.vendorId].r200+=m.r200||0; map[r.vendorId].rOtros+=m.rOtrosCnt||0;
   });
   return map;
 }
 function renderUfMixChart(){
-  const canvas = $('chartUfMix');
-  if(!canvas || typeof Chart==='undefined') return;
-  if(ufMixChart){ ufMixChart.destroy(); ufMixChart=null; }
-  const map = aggregateUfMixByAdvisor();
-  const ids = Object.keys(map);
-  ufMixChart = new Chart(canvas, {
-    type: 'bar',
-    data: {
-      labels: ids.map(id=>map[id].vendorName),
-      datasets: [
-        {label:'Ventas 80 UF', data:ids.map(id=>map[id].v80), backgroundColor:'#38bdf8', stack:'ventas'},
-        {label:'Ventas 130 UF', data:ids.map(id=>map[id].v130), backgroundColor:'#2f4cdd', stack:'ventas'},
-        {label:'Ventas 200 UF', data:ids.map(id=>map[id].v200), backgroundColor:'#10b981', stack:'ventas'},
-        {label:'Ventas Otros UF', data:ids.map(id=>map[id].vOtros), backgroundColor:'#8b5cf6', stack:'ventas'},
-        {label:'Caídas 80 UF', data:ids.map(id=>map[id].r80), backgroundColor:'#fda4af', stack:'rechazos'},
-        {label:'Caídas 130 UF', data:ids.map(id=>map[id].r130), backgroundColor:'#f43f5e', stack:'rechazos'},
-        {label:'Caídas 200 UF', data:ids.map(id=>map[id].r200), backgroundColor:'#be123c', stack:'rechazos'},
-        {label:'Caídas Otros', data:ids.map(id=>map[id].rOtros), backgroundColor:'#fb923c', stack:'rechazos'}
+  const canvas=$('chartUfMix'); if(!canvas || typeof Chart==='undefined') return;
+  if(ufMixChart){ufMixChart.destroy();ufMixChart=null;}
+  const map=aggregateUfMixByAdvisor(), ids=Object.keys(map);
+  ufMixChart=new Chart(canvas,{
+    type:'bar',
+    data:{
+      labels:ids.map(id=>map[id].vendorName),
+      datasets:[
+        {label:'Ventas 80 UF',data:ids.map(id=>map[id].v80),backgroundColor:'#38bdf8',stack:'ventas'},
+        {label:'Ventas 130 UF',data:ids.map(id=>map[id].v130),backgroundColor:'#2f4cdd',stack:'ventas'},
+        {label:'Ventas 200 UF',data:ids.map(id=>map[id].v200),backgroundColor:'#10b981',stack:'ventas'},
+        {label:'Ventas Otros UF',data:ids.map(id=>map[id].vOtros),backgroundColor:'#8b5cf6',stack:'ventas'},
+        {label:'Caídas 80 UF',data:ids.map(id=>map[id].r80),backgroundColor:'#fda4af',stack:'rechazos'},
+        {label:'Caídas 130 UF',data:ids.map(id=>map[id].r130),backgroundColor:'#f43f5e',stack:'rechazos'},
+        {label:'Caídas 200 UF',data:ids.map(id=>map[id].r200),backgroundColor:'#be123c',stack:'rechazos'},
+        {label:'Caídas Otros',data:ids.map(id=>map[id].rOtros),backgroundColor:'#fb923c',stack:'rechazos'}
       ]
     },
-    options: { responsive:true, animation:false, plugins:{legend:{position:'bottom'}}, scales:{ x:{stacked:true}, y:{stacked:true, beginAtZero:true} } }
+    options:{responsive:true,animation:false,plugins:{legend:{position:'bottom'}},scales:{x:{stacked:true},y:{stacked:true,beginAtZero:true}}}
   });
 }
-
 function renderTrend(){
   const fv=$('fVendor').value, fz=$('fZone').value;
-  const all = aggregateRows().filter(r=>(!fv||r.vendorId===fv)&&(!fz||r.zone===fz));
-  const periods = [...new Set(all.map(r=>r.period).filter(Boolean))].sort().slice(-6);
-  const byPeriod = {}; periods.forEach(p=>byPeriod[p]={meta:0,neta:0});
-  all.forEach(r=>{ if(byPeriod[r.period]){ byPeriod[r.period].meta+=r.meta; byPeriod[r.period].neta+=r.ventaNeta; } });
-  if(trendChart){ trendChart.destroy(); trendChart=null; }
+  const all=aggregateRows().filter(r=>(!fv||r.vendorId===fv)&&(!fz||r.zone===fz));
+  const periods=[...new Set(all.map(r=>r.period).filter(Boolean))].sort().slice(-6);
+  const byPeriod={}; periods.forEach(p=>byPeriod[p]={meta:0,neta:0,compra:0});
+  all.forEach(r=>{ if(byPeriod[r.period]){ byPeriod[r.period].meta+=r.meta; byPeriod[r.period].neta+=r.ventaNeta; byPeriod[r.period].compra+=r.compra; } });
+  if(trendChart){trendChart.destroy();trendChart=null;}
   if(!periods.length){ $('trendNote').textContent='Sin meses suficientes para tendencia.'; return; }
-  $('trendNote').textContent='Evolución mensual en formato '+metricMode.toUpperCase()+'.';
+  const modeLabel = activeMode==='money' ? 'Millones ($ CLP)' : (activeMode==='contracts' ? 'Contratos' : 'UF');
+  $('trendNote').textContent=`Evolución mensual replicada en ${modeLabel}.`;
   if(typeof Chart!=='undefined'){
-    trendChart = new Chart($('chartTrend'), {
+    trendChart=new Chart($('chartTrend'),{
       type:'line',
       data:{
         labels:periods,
         datasets:[
-          {label:'Meta', data:periods.map(p=>convertFromUf(byPeriod[p].meta)), borderColor:'#94A3C4', borderDash:[5,4]},
-          {label:'Cursado Neto', data:periods.map(p=>convertFromUf(byPeriod[p].neta)), borderColor:'#2F4CDD'}
+          {label:'Meta ('+modeLabel+')',data:periods.map(p=>chartVal(byPeriod[p].meta)),borderColor:'#94A3C4',borderDash:[5,4]},
+          {label:'Cursado Neto ('+modeLabel+')',data:periods.map(p=>chartVal(byPeriod[p].neta, byPeriod[p].compra)),borderColor:'#2F4CDD'}
         ]
       },
       options:{responsive:true,animation:false,plugins:{legend:{position:'bottom'}}}
     });
   }
 }
-
 function renderDaily(rows){
   const tb=$('tblDailyBody');
   if(!rows.length){ tb.innerHTML='<tr><td colspan="5"><div class="empty">Sin datos aún.</div></td></tr>'; return; }
-  tb.innerHTML = rows.slice().sort((a,b)=>a.vendorName.localeCompare(b.vendorName)||b.period.localeCompare(a.period)).map(r=>`<tr>
+  tb.innerHTML=rows.slice().sort((a,b)=>a.vendorName.localeCompare(b.vendorName)||b.period.localeCompare(a.period)).map(r=>`<tr>
     <td>${esc(r.vendorName)}</td><td>${r.period||'—'}</td><td class="num">${fmtByMode(r.meta)}</td><td class="num">${r.diasTotales}</td>
-    <td class="num"><b>${fmtByMode(r.ventaDiariaNecesaria)}</b>/día</td>
-  </tr>`).join('');
+    <td class="num"><b>${fmtByMode(r.ventaDiariaNecesaria)}</b>/día</td></tr>`).join('');
 }
-
 function renderStress(){
   const rows=filteredRows();
   if(!state.stressTouched){
-    const ref = rows.find(r=>r.diasTotales>0);
-    $('stressDias').value = ref ? ref.diasTotales : (autoBusinessDays($('fPeriod').value||localPeriod())||22);
+    const ref=rows.find(r=>r.diasTotales>0);
+    $('stressDias').value=ref?ref.diasTotales:(autoBusinessDays($('fPeriod').value||localPeriod())||22);
   }
-  const diasSim = +$('stressDias').value || 1;
+  const diasSim=+$('stressDias').value||1;
   let totMeta=0, totRealDia=0, totEstDia=0;
-  const trs = rows.map(r=>{
-    const realDia = r.ventaDiariaNecesaria;
-    const estDia = r.meta>0 ? r.meta/diasSim : 0;
+  $('tblStressBody').innerHTML = rows.length ? rows.map(r=>{
+    const realDia=r.ventaDiariaNecesaria, estDia=r.meta>0?r.meta/diasSim:0;
     totMeta+=r.meta; totRealDia+=realDia; totEstDia+=estDia;
-    return `<tr>
-      <td>${esc(r.vendorName)}</td><td>${r.period||'—'}</td><td class="num">${fmtByMode(r.meta)}</td><td class="num">${r.diasTotales}</td>
+    return `<tr><td>${esc(r.vendorName)}</td><td>${r.period||'—'}</td><td class="num">${fmtByMode(r.meta)}</td><td class="num">${r.diasTotales}</td>
       <td class="num">${fmtByMode(realDia)}</td><td class="num">${diasSim}</td><td class="num"><b>${fmtByMode(estDia)}</b></td>
-      <td class="num">${estDia>realDia?'+':''}${fmtByMode(estDia-realDia)}</td>
-    </tr>`;
-  });
-  $('tblStressBody').innerHTML = trs.length?trs.join(''):'<tr><td colspan="8"><div class="empty">Sin datos para simular.</div></td></tr>';
+      <td class="num">${estDia>realDia?'+':''}${fmtByMode(estDia-realDia)}</td></tr>`;
+  }).join('') : '<tr><td colspan="8"><div class="empty">Sin datos para simular.</div></td></tr>';
   $('stressKpis').innerHTML =
-    kpi('Meta Total', fmtByMode(totMeta)) +
-    kpi('Ritmo Diario Real', fmtByMode(totRealDia)) +
-    kpi('Ritmo Diario Estresado', fmtByMode(totEstDia), 'En '+diasSim+' días') +
-    kpi('Incremento Diario', fmtByMode(totEstDia-totRealDia));
+    kpi('Meta Total',fmtByMode(totMeta)) + kpi('Ritmo Diario Real',fmtByMode(totRealDia)) +
+    kpi('Ritmo Diario Estresado',fmtByMode(totEstDia),'En '+diasSim+' días') + kpi('Incremento Diario',fmtByMode(totEstDia-totRealDia));
 }
-$('stressDias').addEventListener('input', ()=>{ state.stressTouched=true; renderStress(); });
+$('stressDias').addEventListener('input',()=>{ state.stressTouched=true; renderStress(); });
 $('stressReset').onclick=()=>{ state.stressTouched=false; renderStress(); };
 
 function openModal(id){ $(id).classList.add('open'); }
 function closeModal(id){ $(id).classList.remove('open'); }
 document.querySelectorAll('[data-close]').forEach(b=>b.onclick=()=>b.closest('.modal-bg').classList.remove('open'));
+document.querySelectorAll('.modal-bg').forEach(m=>m.onclick=e=>{ if(e.target===m) m.classList.remove('open'); });
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') document.querySelectorAll('.modal-bg.open').forEach(m=>m.classList.remove('open')); });
 
 $('btnVendor').onclick=()=>{ $('vId').value=''; $('vName').value=''; $('vZone').value=''; $('vDel').style.display='none'; openModal('mVendor'); };
 function openVendorEdit(id){ const v=vendors.find(x=>x.id===id); if(!v) return; $('vId').value=id; $('vName').value=v.name; $('vZone').value=v.zone; $('vDel').style.display='inline-block'; openModal('mVendor'); }
@@ -1000,35 +1101,30 @@ $('vDel').onclick=()=>{
 $('btnRecord').onclick=()=>{
   if(!vendors.length) return notify('Primero agrega un asesor');
   ['rId','rVisit','rVenta','rNuevos','rCompra','rFactura','rDevol','rObs','rV80','rV130','rV200','rVOtrosUf','rR80','rR130','rR200','rROtrosUf'].forEach(id=>{ if($(id)) $(id).value=''; });
-  $('rDate').value = localISODate(); $('rDel').style.display='none'; openModal('mRecord');
+  $('rDate').value=localISODate(); $('rDel').style.display='none'; openModal('mRecord');
 };
 $('rSave').onclick=()=>{
   const v80=+$('rV80').value||0, v130=+$('rV130').value||0, v200=+$('rV200').value||0, vOtrosUf=+$('rVOtrosUf').value||0;
   const r80=+$('rR80').value||0, r130=+$('rR130').value||0, r200=+$('rR200').value||0, rOtrosUf=+$('rROtrosUf').value||0;
-  const ufMix={ v80, v130, v200, vOtrosCnt:vOtrosUf>0?1:0, vOtrosUf, r80, r130, r200, rOtrosCnt:rOtrosUf>0?1:0, rOtrosUf };
-  const obsEncoded = encodeUfMixToObs($('rObs').value, ufMix);
-  const compraCalc = (+$('rCompra').value) || (v80 + v130 + v200 + (vOtrosUf>0?1:0));
-  const ventaCalc = (+$('rVenta').value) || +(v80*80 + v130*130 + v200*200 + vOtrosUf).toFixed(2);
-  const devolCalc = (+$('rDevol').value) || +(r80*80 + r130*130 + r200*200 + rOtrosUf).toFixed(2);
-  const facturaCalc = $('rFactura').value.trim()!=='' ? (+$('rFactura').value||0) : ventaCalc;
-
+  const ufMix={v80,v130,v200,vOtrosCnt:vOtrosUf>0?1:0,vOtrosUf,r80,r130,r200,rOtrosCnt:rOtrosUf>0?1:0,rOtrosUf};
+  const obsEncoded=encodeUfMixToObs($('rObs').value, ufMix);
   const data={
     vendorId:$('rVendor').value, date:$('rDate').value,
-    clientesVisitados:+$('rVisit').value||0, ventaTotalSinIva:ventaCalc,
-    clientesNuevos:+$('rNuevos').value||0, clientesConCompra:compraCalc,
-    facturadoSinIva:facturaCalc, facturadoInformado:true,
-    devoluciones:devolCalc, ufMix, observaciones:obsEncoded
+    clientesVisitados:+$('rVisit').value||0, ventaTotalSinIva:+$('rVenta').value||0,
+    clientesNuevos:+$('rNuevos').value||0, clientesConCompra:+$('rCompra').value||0,
+    facturadoSinIva:+$('rFactura').value||0, facturadoInformado:$('rFactura').value.trim()!=='',
+    devoluciones:+$('rDevol').value||0, ufMix, observaciones:obsEncoded
   };
   if(!validISODate(data.date)) return notify('Fecha inválida');
   const id=$('rId').value;
-  let savedRec;
-  if(id){ savedRec=dailyRecords.find(x=>x.id===id); if(savedRec) Object.assign(savedRec,data); }
-  else { savedRec={id:uid(), ...data, source:'local'}; dailyRecords.push(savedRec); }
+  let savedRecord;
+  if(id){ savedRecord=dailyRecords.find(x=>x.id===id); if(savedRecord) Object.assign(savedRecord,data); }
+  else { savedRecord={id:uid(), ...data, source:'local'}; dailyRecords.push(savedRecord); }
   save(LS.r, dailyRecords); closeModal('mRecord'); render();
   const v=vendors.find(x=>x.id===data.vendorId);
   if(v && sheetUrl){
     sendToSheet({
-      action:'record', recordId:savedRec.id, vendedor:v.name, zona:v.zone, fecha:data.date,
+      action:'record', recordId:savedRecord.sheetRecordId||savedRecord.id, vendedor:v.name, zona:v.zone, fecha:data.date,
       visitados:data.clientesVisitados, ventaTotal:data.ventaTotalSinIva,
       clientesNuevos:data.clientesNuevos, clientesCompra:data.clientesConCompra,
       facturado:data.facturadoSinIva, devolucion:data.devoluciones,
@@ -1041,36 +1137,59 @@ $('rDel').onclick=()=>{
   dailyRecords=dailyRecords.filter(x=>x.id!==id); save(LS.r, dailyRecords); closeModal('mRecord'); render();
 };
 
+/* Metas en UF, Dinero ($M) o Contratos */
+function convertInputToUf(val, unitMode){
+  const n = Number(val)||0;
+  if(unitMode === 'money') return (n * 1000000) / ufValueClp;
+  if(unitMode === 'contracts') return n * avgTicketUf;
+  return n;
+}
+function updateMetaPreview(){
+  const mode = $('mUnitMode').value;
+  const raw = Number($('mMetaVenta').value)||0;
+  const uf = convertInputToUf(raw, mode);
+  if(mode === 'money') $('mMetaInputLabel').textContent = 'Valor de la meta ($ Millones CLP)';
+  else if(mode === 'contracts') $('mMetaInputLabel').textContent = 'Cantidad de contratos meta';
+  else $('mMetaInputLabel').textContent = 'Valor de la meta (UF)';
+  $('mMetaPreview').textContent = 'Equivale a: ' + fmtAllThree(uf);
+}
+$('mUnitMode').addEventListener('change', updateMetaPreview);
+$('mMetaVenta').addEventListener('input', updateMetaPreview);
+
 function renderMetaList(){
   $('metaList').innerHTML = metas.length ? metas.slice().sort((a,b)=>b.period.localeCompare(a.period)).map(m=>{
     const v=vendors.find(x=>x.id===m.vendorId);
-    return `<div class="list-row"><span>${esc(v?v.name:'—')} · ${m.period} · ${fmtByMode(m.metaVenta,'uf')}</span><button data-em="${m.vendorId}|${m.period}">Editar</button></div>`;
+    return `<div class="list-row"><span>${esc(v?v.name:'—')} · ${m.period} · ${fmtAllThree(m.metaVenta)}</span><button data-em="${m.vendorId}|${m.period}">Editar</button></div>`;
   }).join('') : '<div class="list-row la">Sin metas cargadas.</div>';
   $('metaList').querySelectorAll('[data-em]').forEach(b=>b.onclick=()=>{ const [vid,p]=b.dataset.em.split('|'); openMetaEdit(vid,p); });
 }
 $('btnMeta').onclick=()=>{
   if(!vendors.length) return notify('Primero agrega un asesor');
-  const p=localPeriod(); $('mId').value=''; $('mMetaVenta').value=''; $('mPeriod').value=p;
+  const p=localPeriod(); $('mId').value=''; $('mUnitMode').value = activeMode; $('mMetaVenta').value=''; $('mPeriod').value=p;
   $('mDiasTotales').value=autoBusinessDays(p); $('mDiasTranscurridos').value=''; $('mDel').style.display='none';
-  renderMetaList(); openModal('mMeta');
+  updateMetaPreview(); renderMetaList(); openModal('mMeta');
 };
 function openMetaEdit(vendorId,period){
   const m=metas.find(x=>x.vendorId===vendorId && x.period===period);
-  $('mId').value=m?m.id:''; $('mVendorSel').value=vendorId; $('mPeriod').value=period; $('mMetaVenta').value=m?m.metaVenta:0;
+  $('mId').value=m?m.id:''; $('mVendorSel').value=vendorId; $('mPeriod').value=period;
+  $('mUnitMode').value = 'uf';
+  $('mMetaVenta').value=m?m.metaVenta:0;
   $('mDiasTotales').value=m?m.diasTotales:autoBusinessDays(period); $('mDiasTranscurridos').value=(m&&m.manual)?m.diasTranscurridos:'';
-  $('mDel').style.display=m?'inline-block':'none'; renderMetaList(); openModal('mMeta');
+  $('mDel').style.display=m?'inline-block':'none';
+  updateMetaPreview(); renderMetaList(); openModal('mMeta');
 }
 $('mAuto').onclick=()=>{ $('mDiasTotales').value=autoBusinessDays($('mPeriod').value); $('mDiasTranscurridos').value=''; };
 $('mSave').onclick=()=>{
   const vendorId=$('mVendorSel').value, period=$('mPeriod').value;
   if(!validPeriod(period)) return notify('Período inválido');
+  const metaUf = convertInputToUf($('mMetaVenta').value, $('mUnitMode').value);
   const tr=$('mDiasTranscurridos').value;
-  const data={ vendorId, period, metaVenta:+$('mMetaVenta').value||0, diasTotales:+$('mDiasTotales').value||autoBusinessDays(period), diasTranscurridos:tr===''?0:+tr, manual:tr!=='' };
+  const data={vendorId,period,metaVenta:Number(metaUf.toFixed(2)),diasTotales:+$('mDiasTotales').value||autoBusinessDays(period),diasTranscurridos:tr===''?0:+tr,manual:tr!==''};
   const ex=metas.find(x=>x.vendorId===vendorId && x.period===period);
-  if(ex) Object.assign(ex,data); else metas.push({id:uid(), ...data});
+  if(ex) Object.assign(ex,data); else metas.push({id:uid(),...data});
   save(LS.m, metas); closeModal('mMeta'); render();
   const v=vendors.find(x=>x.id===vendorId);
-  if(v && sheetUrl) sendToSheet({action:'meta', vendedor:v.name, periodo:period, metaVenta:data.metaVenta});
+  if(v && sheetUrl) sendToSheet({action:'meta',vendedor:v.name,periodo:period,metaVenta:data.metaVenta});
 };
 $('mDel').onclick=()=>{
   const vendorId=$('mVendorSel').value, period=$('mPeriod').value;
@@ -1084,7 +1203,7 @@ $('btnRecList').onclick=()=>{
   const rs=dailyRecords.slice().sort((a,b)=>(b.date||'').localeCompare(a.date||''));
   $('recList').innerHTML = rs.length ? rs.map(r=>{
     const v=vendors.find(x=>x.id===r.vendorId)||{name:'—'};
-    return `<div class="list-row"><span>${r.date} · ${esc(v.name)} · ${fmtByMode(r.ventaTotalSinIva)} · ${r.compra||0} cttos</span><button data-er="${r.id}">Editar</button></div>`;
+    return `<div class="list-row"><span>${r.date} · ${esc(v.name)} · ${fmtAllThree(r.ventaTotalSinIva, r.clientesConCompra)}</span><button data-er="${r.id}">Editar</button></div>`;
   }).join('') : '<div class="list-row la">Sin registros.</div>';
   $('recList').querySelectorAll('[data-er]').forEach(b=>b.onclick=()=>{
     const r=dailyRecords.find(x=>x.id===b.dataset.er); if(!r) return;
@@ -1101,8 +1220,8 @@ $('btnRecList').onclick=()=>{
 };
 
 $('btnExport').onclick=()=>{
-  const headers=['vendedor','zona','fecha','clientesVisitados','ventaTotalUf','clientesNuevos','clientesConCompra','facturadoUf','devolucionesUf','observaciones'];
-  const csv=[headers.join(','), ...dailyRecords.map(r=>{ const v=vendors.find(x=>x.id===r.vendorId)||{}; return [v.name,v.zone,r.date,r.clientesVisitados,r.ventaTotalSinIva,r.clientesNuevos,r.clientesConCompra,r.facturadoSinIva,r.devoluciones,'"'+String(r.observaciones||'').replace(/"/g,'""')+'"'].join(','); })].join('\n');
+  const headers=['vendedor','zona','fecha','clientesVisitados','ventaTotalUf','ventaTotalMillones','contratosIngresados','clientesNuevos','facturadoUf','devolucionesUf','observaciones'];
+  const csv=[headers.join(','), ...dailyRecords.map(r=>{ const v=vendors.find(x=>x.id===r.vendorId)||{}; return [v.name,v.zone,r.date,r.clientesVisitados,r.ventaTotalSinIva,ufToMillions(r.ventaTotalSinIva).toFixed(2),r.clientesConCompra,r.clientesNuevos,r.facturadoSinIva,r.devoluciones,'"'+String(r.observaciones||'').replace(/"/g,'""')+'"'].join(','); })].join('\n');
   const a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'})); a.download='nexus_sendero_'+localISODate()+'.csv'; a.click();
 };
 
@@ -1110,47 +1229,50 @@ function buildMessageText(isInd, vendorId){
   const rows = filteredRows();
   const t = totalsOf(rows);
   const per = $('fPeriod').value || 'Todos';
-  const paramLine = `⚙️ *Parámetros:* UF ${new Intl.NumberFormat('es-CL').format(ufValueClp)} CLP | Ticket ref. ${avgTicketUf} UF`;
+  const modeTitle = activeMode==='money' ? 'DINERO ($M)' : (activeMode==='contracts' ? 'CONTRATOS' : 'UF');
+  const fxNote = `⚙️ *Base:* UF $${new Intl.NumberFormat('es-CL').format(ufValueClp)} CLP | Ticket ref. ${avgTicketUf} UF | Vista: *${modeTitle}*`;
 
   if(isInd){
     const v = vendors.find(x=>x.id===vendorId);
+    const m = aggregateUfMixByAdvisor()[vendorId] || {};
     return [
       `📊 *INFORME PARQUE DEL SENDERO — ${v?v.name:''}*`,
       `📍 *Sector:* ${v?(v.zone||'—'):'—'} | 📅 *Período:* ${per}`,
-      paramLine,
-      `🎯 *Meta (UF | Contratos | Millones):* ${fmtAllThreeFormats(t.meta)}`,
-      `✅ *Cursado Neto (UF | Contratos | Millones):* ${fmtAllThreeFormats(t.neta, t.compra)} (${fmtP(t.cumplReal)})`,
-      `📈 *Forecast (UF | Contratos | Millones):* ${fmtAllThreeFormats(t.forecast)} (${fmtP(t.cumplProy)})`,
-      `📝 *Ingresado:* ${fmtAllThreeFormats(t.venta, t.compra)}`,
-      `↩️ *Caídas / Anulaciones:* ${fmtAllThreeFormats(t.devol)}`,
-      `⏳ *Pendiente / Rechazo:* ${fmtAllThreeFormats(t.quiebre)}`,
-      `👥 *Entrevistas:* ${t.visit} | *Cierre:* ${fmtP(t.efect)} | *Nuevos:* ${t.nuevos}`
+      fxNote,
+      `🎯 *Meta:* ${fmtAllThree(t.meta)}`,
+      `✅ *Cursado Neto:* ${fmtAllThree(t.neta, t.compra)} (${fmtP(t.cumplReal)})`,
+      `📈 *Forecast:* ${fmtAllThree(t.forecast)} (${fmtP(t.cumplProy)})`,
+      `📝 *Ingresado:* ${fmtAllThree(t.venta, t.compra)}`,
+      `↩️ *Caídas / Anulaciones:* ${fmtAllThree(t.devol)}`,
+      `⏳ *Pendiente Curse / Rechazo:* ${fmtAllThree(t.quiebre)}`,
+      `👥 *Entrevistas:* ${t.visit} | *Cierre:* ${fmtP(t.efect)} | *Nuevos:* ${t.nuevos}`,
+      `📦 *Tramos UF:* V(${m.v80||0}x80, ${m.v130||0}x130, ${m.v200||0}x200) | Caídas(${m.r80||0}x80, ${m.r130||0}x130, ${m.r200||0}x200)`
     ].join('\n');
   }
 
   const by = {};
   rows.forEach(r=>{
-    const b = by[r.vendorName] || (by[r.vendorName]={neta:0, meta:0, compra:0, nuevos:0});
+    const b = by[r.vendorName] || (by[r.vendorName]={neta:0,meta:0,compra:0,nuevos:0});
     b.neta += r.ventaNeta; b.meta += r.meta; b.compra += r.compra; b.nuevos += r.nuevos;
   });
   const det = Object.keys(by).map(n=>{
     const d = by[n];
     const c = d.meta>0 ? d.neta/d.meta*100 : 0;
     const st = statusOf(c, d.nuevos);
-    return `• ${st.icon} *${n}:* ${fmtAllThreeFormats(d.neta, d.compra)} (${fmtP(c)})`;
+    return `• ${st.icon} *${n}:* ${fmtAllThree(d.neta, d.compra)} (${fmtP(c)})`;
   }).join('\n');
 
   return [
     `📊 *INFORME CONSOLIDADO PARQUE DEL SENDERO*`,
     `📅 *Período:* ${per}`,
-    paramLine,
-    `🎯 *Meta (UF | Contratos | Millones):* ${fmtAllThreeFormats(t.meta)}`,
-    `✅ *Cursado Neto (UF | Contratos | Millones):* ${fmtAllThreeFormats(t.neta, t.compra)} (${fmtP(t.cumplReal)})`,
-    `📈 *Forecast (UF | Contratos | Millones):* ${fmtAllThreeFormats(t.forecast)} (${fmtP(t.cumplProy)})`,
-    `↩️ *Caídas:* ${fmtAllThreeFormats(t.devol)} | ⏳ *Pendiente:* ${fmtAllThreeFormats(t.quiebre)}`,
+    fxNote,
+    `🎯 *Meta:* ${fmtAllThree(t.meta)}`,
+    `✅ *Cursado Neto:* ${fmtAllThree(t.neta, t.compra)} (${fmtP(t.cumplReal)})`,
+    `📈 *Forecast:* ${fmtAllThree(t.forecast)} (${fmtP(t.cumplProy)})`,
+    `↩️ *Caídas:* ${fmtAllThree(t.devol)} | ⏳ *Pendiente:* ${fmtAllThree(t.quiebre)}`,
     `👥 *Entrevistas:* ${t.visit} | *Contratos Ing.:* ${t.compra} | *Cierre:* ${fmtP(t.efect)} | *Nuevos:* ${t.nuevos}`,
     '',
-    `*Detalle por asesor (UF | Contratos | Millones):*`,
+    `*Detalle por asesor (UF · Dinero $M · Contratos):*`,
     det
   ].join('\n');
 }
@@ -1174,7 +1296,7 @@ $('repGo').onclick=async()=>{
   finally{ $('overlay').style.display='none'; if(isInd){ $('fVendor').value=prevV; render(); } }
   $('pvText').value=text;
   $('pvWA').href='https://api.whatsapp.com/send?text='+encodeURIComponent(text);
-  $('pvMail').href='mailto:?subject='+encodeURIComponent('Informe comercial NEXUS (UF · Contratos · Millones)')+'&body='+encodeURIComponent(text.replace(/\*/g,''));
+  $('pvMail').href='mailto:?subject='+encodeURIComponent('Informe comercial NEXUS (UF · Dinero · Contratos)')+'&body='+encodeURIComponent(text.replace(/\*/g,''));
   openModal('mPreview');
 };
 $('pvJpg').onclick=()=>{ if(!lastCanvas) return; lastCanvas.toBlob(b=>{ const a=document.createElement('a'); a.href=URL.createObjectURL(b); a.download='informe-nexus-'+localISODate()+'.jpg'; a.click(); },'image/jpeg',0.92); };
@@ -1185,12 +1307,74 @@ $('btnClearF').onclick=()=>{ $('fSearch').value=''; $('fVendor').value=''; $('fZ
 ['fVendor','fZone','fPeriod'].forEach(id=>$(id).addEventListener('change', render));
 $('fSearch').addEventListener('input', render);
 $('btnTheme').onclick=()=>{
-  const next = document.documentElement.getAttribute('data-theme')==='dark' ? 'light' : 'dark';
+  const next=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
   document.documentElement.setAttribute('data-theme', next); save(LS.t, next);
-  $('btnTheme').textContent = next==='dark' ? '☀️' : '🌙';
+  $('btnTheme').textContent=next==='dark'?'☀️':'🌙';
 };
 
-render();
+/* Intro, Landing & Sidebar */
+(()=>{
+  const cin=$('nxCinema');
+  if(cin){
+    const closeCin=()=>{ cin.classList.add('out'); setTimeout(()=>cin.remove(),600); };
+    $('cnSkip')?.addEventListener('click',closeCin);
+    cin.addEventListener('click',closeCin);
+    setTimeout(closeCin,4200);
+  }
+  const enterPanel=(openRec)=>{
+    document.body.classList.add('nx-sidebar-on');
+    $('landingHero')?.style.setProperty('display','none');
+    document.querySelector('.landing-bottom')?.style.setProperty('display','none');
+    $('dashboardTop')?.scrollIntoView({behavior:'smooth',block:'start'});
+    if(openRec) $('btnRecord')?.click();
+  };
+  $('landingEnter')?.addEventListener('click',()=>enterPanel(false));
+  $('landingRecord')?.addEventListener('click',()=>enterPanel(true));
+  $('nxsMobileToggle')?.addEventListener('click',()=>document.body.classList.toggle('nxs-menu-open'));
+  $('nxsScrim')?.addEventListener('click',()=>document.body.classList.remove('nxs-menu-open'));
+
+  document.querySelectorAll('[data-nxs]').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      document.body.classList.add('nx-sidebar-on');
+      $('landingHero')?.style.setProperty('display','none');
+      document.querySelector('.landing-bottom')?.style.setProperty('display','none');
+      const k=btn.dataset.nxs;
+      const goTo=(id)=>{ const el=$(id); if(el) el.scrollIntoView({behavior:'smooth',block:'start'}); };
+      if(k==='overview') goTo('dashboardTop');
+      else if(k==='daily') goTo('tblDaily');
+      else if(k==='trends') goTo('chartTrend');
+      else if(k==='performance') goTo('tbl');
+      else if(k==='diagnostics') goTo('nexusDiag');
+      else if(k==='stress') goTo('stressDias');
+      else if(k==='records') $('btnRecord')?.click();
+      else if(k==='reports') $('btnReport')?.click();
+      else if(k==='team') $('btnVendor')?.click();
+      else if(k==='goals') $('btnMeta')?.click();
+      else if(k==='settings') $('btnSettings')?.click();
+      else if(k==='sheets') $('btnSheet')?.click();
+      document.querySelectorAll('.nxs-link').forEach(b=>b.classList.toggle('active',b.dataset.nxs===k));
+      document.body.classList.remove('nxs-menu-open');
+    });
+  });
+})();
+
+/* Diagnóstico inteligente replicado */
+(()=>{
+  const renderDiag=()=>{
+    const period=$('fPeriod').value || localPeriod();
+    const rows=(lastAggregated||[]).filter(r=>r.period===period && ['red','yellow','green','excellent'].includes(r.status?.level));
+    const c={red:0,yellow:0,green:0};
+    rows.forEach(r=>{ if(r.status.level==='red') c.red++; else if(r.status.level==='yellow') c.yellow++; else c.green++; });
+    $('ndiRed').textContent=c.red; $('ndiYellow').textContent=c.yellow; $('ndiGreen').textContent=c.green;
+    $('ndiRows').innerHTML = rows.length ? rows.map(r=>{
+      const cls=r.status.level==='red'?'diag-red':(r.status.level==='yellow'?'diag-yellow':'diag-green');
+      return `<article class="diag-row"><div><strong>${esc(r.vendorName)}</strong> <span class="diag-pill ${cls}">${r.status.icon} ${r.status.label}</span><p style="margin:6px 0 0;color:var(--text-dim);font-size:12.5px">Neto: ${fmtByMode(r.ventaNeta, r.compra)} (${fmtAllThree(r.ventaNeta, r.compra)}) · Cumpl.: ${fmtP(r.cumplReal)} · Nuevos: ${r.nuevos}</p></div></article>`;
+    }).join('') : '<div class="diag-row">Sin asesores evaluables en el período seleccionado.</div>';
+  };
+  window.addEventListener('nexus:rendered',renderDiag);
+})();
+
+setMetricMode(activeMode);
 updateQueueBadge();
 if(sheetUrl) syncFromSheet(false);
 </script>
